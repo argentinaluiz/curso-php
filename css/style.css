@@ -1,0 +1,48 @@
+.vermelho{color: #B04943}
+a:hover{text-decoration: none}
+
+body{font-family: 'Open Sans'}
+
+/* ===== CABEÇALHO */
+header, 
+footer{
+    padding: 30px 0;
+    background: #F0F0F0
+}
+
+h1{
+    font-family: Oswald;
+    margin: 0
+}
+
+h1 a{color: #333}
+
+/* Estilização do menu */
+#main-nav ul{
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
+#main-nav ul li{display: inline}
+
+#main-nav ul li a{
+    display: inline-block;
+    padding: 5px 8px;
+    color: #333;
+    transition: background 0.5s ease-in-out;
+}
+
+#main-nav ul li a:hover{
+    border-radius: 3px;
+    background: #CCC;
+    color: #666
+}
+
+.navbar-toggle{background: #CCC}
+
+/* Espaçamento superior do menu e do e-Mail */
+#main-nav{margin-top: 8px}
+#email-header{margin-top: 13px}
+
+/* ===== CONTEÚDO */
+#content{padding: 30px 0}
