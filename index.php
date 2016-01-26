@@ -1,6 +1,5 @@
 <?php 
-require 'src/url.php'; 
-$pg = isset($_GET['pg']) ? $_GET['pg'] : '';
+require 'src/url.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -11,7 +10,7 @@ $pg = isset($_GET['pg']) ? $_GET['pg'] : '';
         
         <section class="container" id="content">
             <!-- ##### Conteudo do site ##### -->
-            <?php trocarUrl($pg) ?>
+            <?php trocarUrl($_SERVER['REQUEST_URI']) ?>
         </section>
         
         <!-- ##### Footer ##### -->
