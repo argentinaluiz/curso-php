@@ -10,11 +10,11 @@
         </div>
        <nav class="collapse navbar-collapse col-md-7 col-sm-9 col-xs-12" id="main-nav">
            <ul>
-               <li><a href="home">Home</a></li>
-               <li><a href="empresa">Empresa</a></li>
-               <li><a href="produtos">Produtos</a></li>
-               <li><a href="servicos">Serviços</a></li>
-               <li><a href="contato">Contato</a></li>
+               <li><a href="/home">Home</a></li>
+               <li><a href="/empresa">Empresa</a></li>
+               <li><a href="/produtos">Produtos</a></li>
+               <li><a href="/servicos">Serviços</a></li>
+               <li><a href="/contato">Contato</a></li>
            </ul>
        </nav>
        <div class="col-md-3 hidden-sm hidden-xs" id="email-header"><span class="pull-right"><span class="glyphicon glyphicon-envelope"></span> e-mail@site.com.br</span></div>

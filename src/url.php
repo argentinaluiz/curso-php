@@ -11,17 +11,11 @@ define('VIEWS', 'views/');
  */
 function trocarUrl($url){
     //Filtrando os dados
-	$get = strip_tags(trim(htmlentities($url, ENT_QUOTES)));
-    //Separando nas barras
-    $get = explode('/', $get);
-    //Retirando valores vazios
-    $get = array_filter($get);
-    //Pegando o ultimo valor 
-    $get = end($get);
+	$get = strip_tags(trim(htmlentities($url, ENT_QUOTES)));     
     
-    $rotas = array('home', 'empresa', 'produtos', 'servicos', 'contato');
-        
-	//Se a URL estiver em branco ou não existir, incluir home
+    $rotas = array('home', 'empresa', 'produtos', 'servicos', 'contato', 'respostaForm');
+    
+    //Se a URL estiver em branco ou não existir, incluir home
 	if( empty($get) || !isset($get) ){
 		$get = VIEWS . 'home.php';
     }

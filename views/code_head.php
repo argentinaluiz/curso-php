@@ -7,10 +7,10 @@
     <title>Site simples</title>
 
     <!-- ################# CSS ################# -->
-    <link href="css/bootstrap.min.css" rel="stylesheet"> 
+    <link href="/css/bootstrap.min.css" rel="stylesheet"> 
     <link href='https://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-    <link href="css/style.css" rel="stylesheet">   
+    <link href="/css/style.css" rel="stylesheet">   
 
     <style type="text/css">
         .box1{background: #269abc}
@@ -23,5 +23,5 @@
         .box8{background: #ebcccc}
     </style>
     
-    <script src="js/jquery-2.2.0.min.js"></script>
+    <script src="/js/jquery-2.2.0.min.js"></script>
 </head>

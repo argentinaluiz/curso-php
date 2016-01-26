@@ -1,6 +1,6 @@
 <div class="col-sm-5">
     <h2>Fale Conosco</h2>
-    <form action="?pg=respostaForm" method="post" id="contato">
+    <form action="/respostaForm" method="post" id="contato">
         
         <div class="form-group">
             <label for="nome">Nome</label>
