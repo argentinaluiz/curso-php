@@ -10,19 +10,29 @@ define('VIEWS', 'views/');
  * @param string $url
  */
 function trocarUrl($url){
-	$end = strip_tags(trim(htmlentities($url, ENT_QUOTES)));
-	//Se a URL estiver em branco, incluir home
-	if( empty($end) || !isset($end) ){
-		$end = VIEWS . 'home.php';
-	}
+    //Filtrando os dados
+	$get = strip_tags(trim(htmlentities($url, ENT_QUOTES)));
+    //Separando nas barras
+    $get = explode('/', $get);
+    //Retirando valores vazios
+    $get = array_filter($get);
+    //Pegando o ultimo valor 
+    $get = end($get);
+    
+    $rotas = array('home', 'empresa', 'produtos', 'servicos', 'contato');
+        
+	//Se a URL estiver em branco ou não existir, incluir home
+	if( empty($get) || !isset($get) ){
+		$get = VIEWS . 'home.php';
+    }
 	//Caso nao esteja em branco e nao seja index, verificar se o arquivo existe e se e valido
-	elseif (file_exists( VIEWS . $end . '.php' ) && is_file( VIEWS . $end . '.php' ) ){
-		$end = VIEWS . $end . '.php';
+	elseif (in_array($get, $rotas) && file_exists( VIEWS . $get . '.php' ) && is_file( VIEWS . $get . '.php' ) ){
+		$get = VIEWS . $get . '.php';
 	} else {
 	//Se nao existir ou se nao for um arquivo, incluir pagina de erro
         http_response_code(404);
-		$end = VIEWS . '404.php';
+		$get = VIEWS . '404.php';
 	}
-	require_once $end;
+	include_once $get;
 }
 
