@@ -20,7 +20,7 @@ function trocarUrl($url){
 		$get = VIEWS . 'home.php';
     }
 	//Caso nao esteja em branco e nao seja index, verificar se o arquivo existe e se e valido
-	elseif (in_array($get, $rotas) && file_exists( VIEWS . $get . '.php' ) && is_file( VIEWS . $get . '.php' ) ){
+	elseif (in_array($get, $rotas) && file_exists( VIEWS . $get . '.php' )){
 		$get = VIEWS . $get . '.php';
 	} else {
 	//Se nao existir ou se nao for um arquivo, incluir pagina de erro
