@@ -1,8 +1,4 @@
 <?php
-
-//Endereco da pasta com as partes do layout
-define('VIEWS', 'views/');
-
 /**
  *  INCLUSAO DAS PAGINAS DO SITE
  * @author	Marcia Silva

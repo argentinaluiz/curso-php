@@ -1,13 +1,16 @@
 <?php 
-require 'src/url.php';
+require_once 'src/config.php';
+
+include_once APP . 'url.php';
+
 $pg = isset($_GET['pg']) ? $_GET['pg'] : '';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
-    <?php require 'views/code_head.php' ?>
+    <?php include_once VIEWS . 'code_head.php' ?>
     <body>
         <!-- ##### Header ##### -->
-        <?php include 'views/header.php' ?>
+        <?php include_once VIEWS . 'header.php' ?>
         
         <section class="container" id="content">
             <!-- ##### Conteudo do site ##### -->
@@ -16,8 +19,8 @@ $pg = isset($_GET['pg']) ? $_GET['pg'] : '';
         
         <!-- ##### Footer ##### -->
         <?php         
-        include 'views/footer.php';
-        include 'views/code_footer.php';        
+        include_once VIEWS . 'footer.php';
+        include_once VIEWS . 'code_footer.php';        
         ?>   
     </body>
 </html>
