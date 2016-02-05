@@ -1,10 +1,13 @@
 <?php 
 require_once 'src/config.php';
+include_once APP . 'funcoes.php';
 
-include_once APP . 'url.php';
-
-$pg = isset($_GET['pg']) ? $_GET['pg'] : '';
-?>
+if(!isset($bd)){
+    header('location: ../install');  
+} elseif(array_search('', $bd)){
+    echo '<p>Preencha corretamente todos os dados de conexão com o Banco de Dados</p>';
+} else { ?>
+    
 <!DOCTYPE html>
 <html lang="pt-br">
     <?php include_once VIEWS . 'code_head.php' ?>
@@ -14,7 +17,8 @@ $pg = isset($_GET['pg']) ? $_GET['pg'] : '';
         
         <section class="container" id="content">
             <!-- ##### Conteudo do site ##### -->
-            <?php trocarUrl($pg) ?>
+            <?php                
+            ?>
         </section>
         
         <!-- ##### Footer ##### -->
@@ -24,3 +28,5 @@ $pg = isset($_GET['pg']) ? $_GET['pg'] : '';
         ?>   
     </body>
 </html>
+
+<?php } ?>
