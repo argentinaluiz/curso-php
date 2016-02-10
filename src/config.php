@@ -1,13 +1,14 @@
 <?php
 //Layout
-define('ROOT', DIRECTORY_SEPARATOR);
+define('ROOT', dirname(__DIR__) . DIRECTORY_SEPARATOR);
 define('VIEWS', 'views' . DIRECTORY_SEPARATOR);
 define('APP', __DIR__ . DIRECTORY_SEPARATOR);
+define('INSTALL', ROOT . 'install' . DIRECTORY_SEPARATOR);
 
 
 //Banco de dados
-$bd['host'] = 'çlkçlkçlk';
-$bd['nome_bd'] = 'çlkçlkçlk';
+$bd['host'] = 'localhost';
+$bd['nome_bd'] = 'code_education';
 $bd['tabela'] = 'pages';
-$bd['login'] = 'çlkçlkçlk';
-$bd['senha'] = 'çlkçlkçlk';
+$bd['login'] = 'root';
+$bd['senha'] = 'admin';
