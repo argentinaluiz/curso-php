@@ -30,6 +30,7 @@ if(array_search('', $_POST)){
     
     $cnx = conectaBd($_SESSION['host'], $_SESSION['nomeBD'], $_SESSION['login'], $_SESSION['senha']);
     
+    //Fixture
     if($cnx && file_put_contents($config_file, $conteudo, FILE_APPEND)){
         echo 'ok';
         $cnx->query("DROP TABLE IF EXISTS pages;");
@@ -45,7 +46,7 @@ if(array_search('', $_POST)){
                    ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;'
         );       
             
-    }
+    }    
     elseif($cnx->query($sql)){
         echo 'fim';
     } else {
