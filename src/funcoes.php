@@ -11,17 +11,11 @@
  */
 function conectaBd($host, $nome_bd, $login, $senha){
     try {
-        $conn = new PDO("mysql:host={$host};dbname={$nome_bd}", $login, $senha);      
+        return $conn = new PDO("mysql:host={$host};dbname={$nome_bd}", $login, $senha);      
     } catch(PDOException $e) {
         echo 'Erro: ' . $e->getCode() . ' - ' . $e->getMessage();
     }
 }
-
-function tabelaPageExiste($conn, $db_name){
-    $consulta = $conn->query("SHOW TABLES {$db_name} LIKE 'pages';");
-    return $consulta->fetch(PDO::FETCH_ASSOC);
-}
-
 /**
  * INCLUSAO DAS PAGINAS DO SITE
  * @author	Marcia Silva
