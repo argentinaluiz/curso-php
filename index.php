@@ -1,12 +1,22 @@
 <?php 
 require_once 'src/config.php';
 include_once APP . 'funcoes.php';
+$conexao = conectaBd($bd['host'], $bd['nome_bd'], $bd['login'], $bd['senha']);
 
+//$bd existe?
 if(!isset($bd)){
+    //Se não existir, redirecionar para instalação
     header('location: ../install');  
-} elseif(array_search('', $bd)){
+} 
+//Foi preenchido corretamente?
+elseif(array_search('', $bd)){
     echo '<p>Preencha corretamente todos os dados de conexão com o Banco de Dados</p>';
-} else { ?>
+} 
+//Consegue conectar? Existe a tabela page?
+elseif(!$conexao or !tabelaPageExiste($conexao, $bd['nome_bd'])) {
+    echo '<p>Houve um erro ao ler banco de dados. Reinstale o site inserindo as informações corretas para conexão ao banco de dados. <br> <small>Abra o arquivo "config.php", apague o array "$bd" (todas as chaves), salve e recarregue essa página.</small></p>';
+} else {
+?>
     
 <!DOCTYPE html>
 <html lang="pt-br">
