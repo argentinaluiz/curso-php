@@ -13,7 +13,7 @@ elseif(array_search('', $bd)){
     echo '<p>Preencha corretamente todos os dados de conexão com o Banco de Dados</p>';
 } 
 //Consegue conectar? Existe a tabela page?
-elseif(!$conexao or !tabelaPageExiste($conexao, $bd['nome_bd'])) {
+elseif(!$conexao or !$conexao->query("SHOW TABLES FROM {$bd['nome_bd']} LIKE 'pages';")) {
     echo '<p>Houve um erro ao ler banco de dados. Reinstale o site inserindo as informações corretas para conexão ao banco de dados. <br> <small>Abra o arquivo "config.php", apague o array "$bd" (todas as chaves), salve e recarregue essa página.</small></p>';
 } else {
 ?>
