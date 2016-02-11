@@ -24,7 +24,7 @@ function conectaBd($host, $nome_bd, $login, $senha){
  */
 function trocarUrl($url){
     //Filtrando os dados
-	$get = strip_tags(trim(htmlentities($url, ENT_QUOTES)));     
+	$get = strip_tags(trim(htmlentities($url, ENT_QUOTES)));
     
     $rotas = array('home', 'empresa', 'produtos', 'servicos', 'contato', 'respostaForm');
     
