@@ -16,8 +16,9 @@ elseif(array_search('', $bd)){
 elseif(!$conexao or !$conexao->query("SHOW TABLES FROM {$bd['nome_bd']} LIKE 'pages';")) {
     echo '<p>Houve um erro ao ler banco de dados. Reinstale o site inserindo as informações corretas para conexão ao banco de dados. <br> <small>Abra o arquivo "config.php", apague o array "$bd" (todas as chaves), salve e recarregue essa página.</small></p>';
 } else {
+    $query = $conexao->prepare("SELECT slug_page FROM {$bd['tabela']}");
+    $valor = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
-    
 <!DOCTYPE html>
 <html lang="pt-br">
     <?php include_once VIEWS . 'code_head.php' ?>
@@ -27,8 +28,7 @@ elseif(!$conexao or !$conexao->query("SHOW TABLES FROM {$bd['nome_bd']} LIKE 'pa
         
         <section class="container" id="content">
             <!-- ##### Conteudo do site ##### -->
-            <?php                
-            ?>
+            <?php ?>
         </section>
         
         <!-- ##### Footer ##### -->
