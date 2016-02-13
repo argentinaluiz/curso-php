@@ -15,11 +15,6 @@ $(function(){
     function retorno(dados){
         if(dados === 'erro'){
             status.hide().html('<p class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-remove"></span> Não foi possível gravar suas configurações. Verifique se o arquivo \"config.php\" tem permissão de escrita.</p>').fadeIn();
-<<<<<<< HEAD
-=======
-        } else if(dados === 'ok'){
-            status.hide().html('<p class="alert alert-success" role="alert"><span class="glyphicon glyphicon-ok"></span> Configurações criadas com sucesso!</p>').fadeIn();            
->>>>>>> 8369f5ccd3c254297b3732c94901a16d37d7cce1
         } else if(dados === 'fim'){
             status.hide().html('<p class="alert alert-success" role="alert"><span class="glyphicon glyphicon-ok"></span> Prontinho, site instalado!</p>').fadeIn();            
         } else {
@@ -61,7 +56,7 @@ $(function(){
                     formConfig.get(0).reset();
                     setTimeout(function(){
                        $(location).attr('href','/'); 
-                    }, 1500);
+                    }, 1000);
                 }                       
             });     
         }

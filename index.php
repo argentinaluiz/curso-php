@@ -18,14 +18,9 @@ elseif(array_search('', $bd)){
 elseif(!$conexao or !$conexao->query("SHOW TABLES FROM {$bd['nome_bd']} LIKE 'pages';")) {
     echo '<p>Houve um erro ao ler banco de dados. Reinstale o site inserindo as informações corretas para conexão ao banco de dados. <br> <small>Abra o arquivo "config.php", apague o array "$bd" (todas as chaves), salve e recarregue essa página.</small></p>';
 } else {
-<<<<<<< HEAD
     //Consulta Slugs para construir lista de rotas
     $query = $conexao->query("SELECT slug_page FROM {$bd['tabela']}");
     $slugs = $query->fetchAll(PDO::FETCH_ASSOC);
-=======
-    $query = $conexao->prepare("SELECT slug_page FROM {$bd['tabela']}");
-    $valor = $query->fetchAll(PDO::FETCH_ASSOC);
->>>>>>> 8369f5ccd3c254297b3732c94901a16d37d7cce1
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -36,11 +31,7 @@ elseif(!$conexao or !$conexao->query("SHOW TABLES FROM {$bd['nome_bd']} LIKE 'pa
         
         <section class="container" id="content">
             <!-- ##### Conteudo do site ##### -->
-<<<<<<< HEAD
-            <?php trocarUrl($pg, criaArray($slugs)) ?>
-=======
-            <?php ?>
->>>>>>> 8369f5ccd3c254297b3732c94901a16d37d7cce1
+            <?php trocarUrl($pg, $slugs) ?>
         </section>
         
         <!-- ##### Footer ##### -->
