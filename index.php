@@ -31,7 +31,7 @@ elseif(!$conexao or !$conexao->query("SHOW TABLES FROM {$bd['nome_bd']} LIKE 'pa
         
         <section class="container" id="content">
             <!-- ##### Conteudo do site ##### -->
-            <?php trocarUrl($pg, $slugs) ?>
+            <?php trocarUrl($pg, criaArray($slugs)) ?>
         </section>
         
         <!-- ##### Footer ##### -->

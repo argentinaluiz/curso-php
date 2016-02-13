@@ -24,13 +24,7 @@ function conectaBd($host, $nome_bd, $login, $senha){
  */
 function trocarUrl($url, $rotas){
     //Filtrando os dados
-<<<<<<< HEAD
 	$get = strip_tags(trim(htmlentities($url, ENT_QUOTES)));    
-=======
-	$get = strip_tags(trim(htmlentities($url, ENT_QUOTES)));
-    
-    $rotas = array('home', 'empresa', 'produtos', 'servicos', 'contato', 'respostaForm');
->>>>>>> 8369f5ccd3c254297b3732c94901a16d37d7cce1
     
     //Se a URL estiver em branco ou não existir, incluir home
 	if( empty($get) || !isset($get) ){
@@ -48,7 +42,7 @@ function trocarUrl($url, $rotas){
 }
 
 /**
- * FUNCAO PARA ITERAR ARRAYS MULTIDIMENSIONAIS TORNANDO AS ARRAY
+ * FUNCAO PARA ITERAR ARRAYS MULTIDIMENSIONAIS TORNANDO AS ARRAY SIMPLES
  * @param type $array
  * @return \RecursiveIteratorIterator
  */
