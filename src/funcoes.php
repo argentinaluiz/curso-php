@@ -22,11 +22,9 @@ function conectaBd($host, $nome_bd, $login, $senha){
  * @version 1.1
  * @param string $url
  */
-function trocarUrl($url){
+function trocarUrl($url, $rotas){
     //Filtrando os dados
-	$get = strip_tags(trim(htmlentities($url, ENT_QUOTES)));
-    
-    $rotas = array('home', 'empresa', 'produtos', 'servicos', 'contato', 'respostaForm');
+	$get = strip_tags(trim(htmlentities($url, ENT_QUOTES)));    
     
     //Se a URL estiver em branco ou não existir, incluir home
 	if( empty($get) || !isset($get) ){
@@ -41,4 +39,17 @@ function trocarUrl($url){
 		$get = VIEWS . '404.php';
 	}
 	include_once $get;
+}
+
+/**
+ * FUNCAO PARA ITERAR ARRAYS MULTIDIMENSIONAIS TORNANDO AS ARRAY
+ * @param type $array
+ * @return \RecursiveIteratorIterator
+ */
+function criaArray($array){
+    $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($array)); 
+    foreach($iterator as $endereco){
+       $lista[] = $endereco;
+    }    
+    return $lista;
 }

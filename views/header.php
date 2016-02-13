@@ -11,9 +11,9 @@
        <nav class="collapse navbar-collapse col-md-7 col-sm-9 col-xs-12" id="main-nav">
            <ul>
                <li><a href="/home">Home</a></li>
-               <li><a href="/empresa">Empresa</a></li>
-               <li><a href="/produtos">Produtos</a></li>
-               <li><a href="/servicos">Serviços</a></li>
+               <li><a href="/a-empresa">Empresa</a></li>
+               <li><a href="/nossos-produtos">Produtos</a></li>
+               <li><a href="/nossos-servicos">Serviços</a></li>
                <li><a href="/contato">Contato</a></li>
            </ul>
        </nav>
