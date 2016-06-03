@@ -2,6 +2,7 @@
 ## 1ª Fase do Projeto - Banco de dados
 
 1) Um banco de dados no MYSQL 
+
 2) Uma tabela "alunos" com:
 
 - id (chave primária)
