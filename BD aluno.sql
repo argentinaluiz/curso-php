@@ -25,7 +25,7 @@ INSERT INTO alunos(aluno_nome, aluno_nota) VALUES ('Daniel Norton', 8);
 INSERT INTO alunos(aluno_nome, aluno_nota) VALUES ('Janes Araújo', 5);
 INSERT INTO alunos(aluno_nome, aluno_nota) VALUES ('Alvin Melo', 6);
 INSERT INTO alunos(aluno_nome, aluno_nota) VALUES ('Thais Melo', 6);
-INSERT INTO alunos(aluno_nome, aluno_nota) VALUES ('Thais Melo', 6);
+INSERT INTO alunos(aluno_nome, aluno_nota) VALUES ('Lúcia Vasconcelos', 3);
 INSERT INTO alunos(aluno_nome, aluno_nota) VALUES ('João da Silva', 5);
 INSERT INTO alunos(aluno_nome, aluno_nota) VALUES ('Clarice Schmidt', 6);
 INSERT INTO alunos(aluno_nome, aluno_nota) VALUES ('Pedro Taub', 7);
