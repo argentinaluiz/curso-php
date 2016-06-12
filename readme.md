@@ -11,6 +11,3 @@ Você criará um CRUD para nosso sistema de cadastro de alunos. Portanto, você 
 
 ------------------------------------------------------------------------------------------
 [Pixwell web design](http://www.pixwell.com.br) - Web design e outras coisas interessantes
-
-------------------------------------------------------------------------------------------
-[Pixwell web design](http://www.pixwell.com.br) - Web design e outras coisas interessantes
