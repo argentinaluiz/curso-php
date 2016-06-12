@@ -1,6 +1,6 @@
 <?php
 
-class Cliente
+class Database
 {
     private $db;
     private $id;
