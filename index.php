@@ -1,9 +1,9 @@
 <?php 
 
-include_once 'src/Cliente.php';
+include_once 'src/Database.php';
 
 $bd_host = 'localhost';
-$bd_nome = 'cliente';
+$bd_nome = 'notas';
 $bd_login = 'root';
 $bd_senha = '';
 
@@ -31,52 +31,40 @@ $alunos = new Database($conexao);
     </head>
     <body>
         <div class="container">
-            <h1 class="text-center">Notas dos alunos</h1>
+            <h1 class="text-center"><span class="glyphicon glyphicon-user"></span> Todos os alunos</h1>
+            <p class="text-center">
+                <a href="#" class="btn btn-success" style="display: inline-block; margin-bottom: 20px">
+                    <span class="glyphicon glyphicon-plus-sign"></span> Inserir Novo Aluno
+                </a>
+            </p>
             <hr>
-            <h2 class="text-center">Menores Notas</h2>
+            <p class="text-center"><span class="glyphicon glyphicon-info-sign"></span> Para ver os dados de um aluno, clique no nome dele.</p>      
+            
             <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
+                <div class="col-sm-6 col-sm-offset-3">                    
+                    
                     <table class="table table-striped">
                         <tr>
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>Nota</th>
+                            <th class="col-sm-1">ID</th>
+                            <th class="col-sm-4">Nome</th>
+                            <th class="col-sm-2">Nota</th>
+                            <th colspan="2" class="col-sm-5"></th>
                         </tr>
                         <?php
-                        $loop_3 = count($tres);
-                            if($loop_3 > 0){
-                                for($i = 0; $i < $loop_3; $i++){?>
+                        
+                            if($alunos->listar() > 0){
+                                foreach($alunos->listar() as $todos){?>
                                 <tr>
-                                    <td><?php echo $tres[$i]['aluno_id'] ?></td>
-                                    <td><?php echo $tres[$i]['aluno_nome'] ?></td>
-                                    <td><?php echo $tres[$i]['aluno_nota'] ?></td>
-                                </tr>
-                                <?php }
-                            } else {
-                                echo '<tr><td colspan="3">Nenhum registro encontrado</td></tr>';
-                            }
-                        ?>
-                    </table>
-                </div>
-            </div>
-            
-            <h2 class="text-center">Todas as Notas</h2>
-            <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <table class="table table-striped">
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>Nota</th>
-                        </tr>
-                        <?php 
-                        $loop_todos = count($todos);
-                            if($loop_todos > 0){
-                                for($i = 0; $i < $loop_todos; $i++){?>
-                                <tr>
-                                    <td><?php echo $todos[$i]['aluno_id'] ?></td>
-                                    <td><?php echo $todos[$i]['aluno_nome'] ?></td>
-                                    <td><?php echo $todos[$i]['aluno_nota'] ?></td>
+                                    <td><?php echo $todos['aluno_id'] ?></td>
+                                    <td><?php echo $todos['aluno_nome'] ?></td>
+                                    <td><?php echo $todos['aluno_nota'] ?></td>
+                                    
+                                    <td>
+                                        <a href="#" class="label label-primary"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="label label-danger"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
+                                    </td>
                                 </tr>
                                 <?php }
                             } else {
