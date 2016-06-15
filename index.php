@@ -33,7 +33,7 @@ $alunos = new Database($conexao);
         <div class="container">
             <h1 class="text-center"><span class="glyphicon glyphicon-user"></span> Todos os alunos</h1>
             <p class="text-center">
-                <a href="#" class="btn btn-success" style="display: inline-block; margin-bottom: 20px">
+                <a href="inserir_registro.php" class="btn btn-success" style="display: inline-block; margin-bottom: 20px">
                     <span class="glyphicon glyphicon-plus-sign"></span> Inserir Novo Aluno
                 </a>
             </p>
