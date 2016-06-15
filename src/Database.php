@@ -14,7 +14,7 @@ class Database
     
     public function listar()
     {
-        $sql = 'SELECT * FROM clientes';
+        $sql = 'SELECT * FROM alunos';
         $stmt = $this->db->query($sql);
         
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
@@ -22,7 +22,7 @@ class Database
     
     public function inserir()
     { 
-        $sql = 'INSERT INTO clientes (cliente_nome, cliente_email) VALUES (:nome, :email)';
+        $sql = 'INSERT INTO alunos (cliente_nome, cliente_email) VALUES (:nome, :email)';
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':nome', $this->getNome());
         $stmt->bindValue(':email', $this->getEmail());
@@ -36,7 +36,7 @@ class Database
     
     public function alterar()
     {  
-        $sql = 'UPDATE clientes SET cliente_nome = :nome, cliente_email = :email WHERE cliente_id = :id';
+        $sql = 'UPDATE alunos SET cliente_nome = :nome, cliente_email = :email WHERE cliente_id = :id';
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':id', $this->getId());
         $stmt->bindValue(':nome', $this->getNome());
@@ -51,7 +51,7 @@ class Database
     
     public function deletar()
     {  
-        $sql = 'DELETE FROM clientes WHERE cliente_id = :id';
+        $sql = 'DELETE FROM alunos WHERE cliente_id = :id';
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':id', $this->getId());
         
