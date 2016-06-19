@@ -5,7 +5,7 @@ class Database
     private $db;
     private $id;
     private $nome;
-    private $email;
+    private $nota;
     
     public function __construct(\PDO $obj_db)
     {
@@ -22,10 +22,10 @@ class Database
     
     public function inserir()
     { 
-        $sql = 'INSERT INTO alunos (cliente_nome, cliente_email) VALUES (:nome, :email)';
+        $sql = 'INSERT INTO alunos (aluno_nome, aluno_nota) VALUES (:nome, :nota)';
         $stmt = $this->db->prepare($sql);
-        $stmt->bindValue(':nome', $this->getNome());
-        $stmt->bindValue(':email', $this->getEmail());
+        $stmt->bindValue(':nome', $this->getNome(), PDO::PARAM_STR);
+        $stmt->bindValue(':nota', $this->getNota(), PDO::PARAM_INT);
         
         if($stmt->execute()){
             return true;
@@ -36,11 +36,11 @@ class Database
     
     public function alterar()
     {  
-        $sql = 'UPDATE alunos SET cliente_nome = :nome, cliente_email = :email WHERE cliente_id = :id';
+        $sql = 'UPDATE alunos SET aluno_nome = :nome, aluno_nota = :nota WHERE aluno_id = :id';
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':id', $this->getId());
         $stmt->bindValue(':nome', $this->getNome());
-        $stmt->bindValue(':email', $this->getEmail());
+        $stmt->bindValue(':nota', $this->getNota());
         
         if($stmt->execute()){
             return true;
@@ -51,7 +51,7 @@ class Database
     
     public function deletar()
     {  
-        $sql = 'DELETE FROM alunos WHERE cliente_id = :id';
+        $sql = 'DELETE FROM alunos WHERE aluno_id = :id';
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':id', $this->getId());
         
@@ -77,9 +77,9 @@ class Database
         return $this->nome;
     }
 
-    function getEmail()
+    function getNota()
     {
-        return $this->email;
+        return $this->nota;
     }
 
     function setDb($db)
@@ -100,9 +100,9 @@ class Database
         return $this;
     }
 
-    function setEmail($email)
+    function setNota($nota)
     {
-        $this->email = $email;
+        $this->nota = $nota;
         return $this;
     }
             
