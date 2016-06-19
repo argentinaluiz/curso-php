@@ -38,20 +38,20 @@ $alunos = new Database($conexao);
             <hr>
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
-                    <form id="inserir_aluno" class="form-group">
+                    <form id="inserir_aluno" class="form-group" method="post">
                         <div class="col-sm-12">
                             <label for="nome">Nome do aluno</label>
                             <input type="text" name="nome" id="nome" class="form-control">
                         </div>
-                        
-                        <div class="col-sm-3">
-                            <label for="nome">Nota</label>
-                            <input type="number" name="nome" id="nome" class="form-control" min="0" max="10">
-                        </div>
+                        <div class="col-sm-5">
+                            <label for="nota">Nota<small> (Insira nota de 0 a 10)</small></label>
+                            <input type="number" name="nota" id="nota" class="form-control" min="0" max="10">                            
+                        </div>                        
                         <div class="col-sm-12">
-                            <input type="submit" value="Registrar" class="btn btn-primary">
-                        </div>
+                            <input type="submit" value="Registrar" class="btn btn-primary" style="margin-top: 10px">
+                        </div>                        
                     </form>
+                    <div class="col-sm-12" id="status_inserir" style="margin-top: 20px"></div>
                 </div>
             </div>         
             
@@ -59,5 +59,6 @@ $alunos = new Database($conexao);
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
   </body>
 </html>
