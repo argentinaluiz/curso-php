@@ -13,6 +13,7 @@ try {
     die('Erro: ' . $e->getCode() . ' - ' . $e->getMessage());
 }
 $alunos = new Database($conexao);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -34,7 +35,12 @@ $alunos = new Database($conexao);
     </style>
     <body>
         <div class="container">
-            <h1 class="text-center"><span class="glyphicon glyphicon-plus-sign"></span> Registro de novo aluno</h1>            
+            <h1 class="text-center"><span class="glyphicon glyphicon-plus-sign"></span> Registro de novo aluno</h1> 
+            <p class="text-center">
+                <a href="index.php" class="btn btn-primary" style="display: inline-block; margin-bottom: 20px">
+                    <span class="glyphicon glyphicon-home"></span> Página inicial
+                </a>
+            </p>
             <hr>
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
@@ -48,7 +54,8 @@ $alunos = new Database($conexao);
                             <input type="number" name="nota" id="nota" class="form-control" min="0" max="10">                            
                         </div>                        
                         <div class="col-sm-12">
-                            <input type="submit" value="Registrar" class="btn btn-primary" style="margin-top: 10px">
+                            <input type="submit" value="Registrar" class="btn btn-success" style="margin-top: 10px">
+                            <a href="index.php" class="btn btn-danger" style="margin: 10px 0 0 10px">Cancelar</a>
                         </div>                        
                     </form>
                     <div class="col-sm-12" id="status_inserir" style="margin-top: 20px"></div>
