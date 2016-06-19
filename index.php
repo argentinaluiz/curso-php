@@ -56,11 +56,11 @@ $alunos = new Database($conexao);
                                 foreach($alunos->listar() as $todos){?>
                                 <tr>
                                     <td><?php echo $todos['aluno_id'] ?></td>
-                                    <td><?php echo $todos['aluno_nome'] ?></td>
+                                    <td><a href="editar_registro.php?id=<?php echo $todos['aluno_id'] ?>"><?php echo $todos['aluno_nome'] ?></a></td>
                                     <td><?php echo $todos['aluno_nota'] ?></td>
                                     
                                     <td>
-                                        <a href="#" class="label label-primary"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+                                        <a href="editar_registro.php?id=<?php echo $todos['aluno_id'] ?>" class="label label-primary"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
                                     </td>
                                     <td>
                                         <a href="#" class="label label-danger"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
