@@ -43,14 +43,10 @@ $alunos = new Database($conexao);
                     
                     <div class="modal-body">
                        <p>Tem certeza que deseja excluir esse registro?</p> 
-                       <p id="registro-para-excluir">
-                           <b>ID:</b> 2 <br>
-                           <b>Nome:</b> Aluno
-                       </p>
+                       <p id="registro-para-excluir"></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                        <a type="button" class="btn btn-danger" id="id-aluno">Cancelar</a>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>                               <a href="#" class="btn btn-danger" id="id-aluno">Deletar</a>
                     </div>
                 </div>
             </div>
@@ -89,12 +85,10 @@ $alunos = new Database($conexao);
                                         <a href="editar_registro.php?id=<?php echo $todos['aluno_id'] ?>" class="label label-primary"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
                                     </td>
                                     <td>
-                                        <form id="link-excluir" method="post">
-                                            <button type="submit" class="label label-danger" style="border: none">
-                                                <span class="glyphicon glyphicon-remove"></span> Excluir
-                                            </button>
-                                            <input type="hidden" name="id" value="<?php echo $todos['aluno_id'] ?>">
-                                        </form>
+                                        <a href="#" class="label label-danger" style="border: none">
+                                            <span class="glyphicon glyphicon-remove"></span> Excluir
+                                        </a>
+                                        <input type="hidden" name="id" value="<?php echo $todos['aluno_id'] ?>">
                                     </td>
                                 </tr>
                                 <?php }
