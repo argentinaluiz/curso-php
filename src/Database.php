@@ -20,6 +20,19 @@ class Database
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
     
+    public function listar_pelo_id($id){
+        $sql = 'SELECT * FROM alunos WHERE aluno_id = :id';
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':id', $id);
+        
+        if($stmt->execute()){
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
+        } else {
+            die('<br>' . print_r($statement->errorInfo(), true) . '<br>');
+        }
+    }
+
+
     public function inserir()
     { 
         $sql = 'INSERT INTO alunos (aluno_nome, aluno_nota) VALUES (:nome, :nota)';
@@ -34,11 +47,11 @@ class Database
         }
     }
     
-    public function alterar()
+    public function alterar($id)
     {  
         $sql = 'UPDATE alunos SET aluno_nome = :nome, aluno_nota = :nota WHERE aluno_id = :id';
         $stmt = $this->db->prepare($sql);
-        $stmt->bindValue(':id', $this->getId());
+        $stmt->bindValue(':id', $id);
         $stmt->bindValue(':nome', $this->getNome());
         $stmt->bindValue(':nota', $this->getNota());
         
