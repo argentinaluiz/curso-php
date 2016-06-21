@@ -62,11 +62,11 @@ class Database
         }
     }
     
-    public function deletar()
+    public function deletar($id)
     {  
         $sql = 'DELETE FROM alunos WHERE aluno_id = :id';
         $stmt = $this->db->prepare($sql);
-        $stmt->bindValue(':id', $this->getId());
+        $stmt->bindValue(':id', $id);
         
         if($stmt->execute()){
             return true;

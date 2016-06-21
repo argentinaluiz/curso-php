@@ -6,12 +6,15 @@ jQuery.noConflict();
     var nome_aluno = $('#nome');
     var nota_aluno = $('#nota');
     
-    //Insercao de dados
+    //Inserir
     var form_inserir = $('#inserir_aluno');
     var script_inserir = 'src/inserir.php';
-    //Edicao de dados
+    //Editar
     var form_editar = $('#editar_aluno');
     var script_editar = 'src/editar.php';
+    //Excluir
+    var btn_excluir = $('#excluir_registro');
+    var script_editar = 'src/excluir.php';
           
     /**
      * Retorno de dados do Script PHP
@@ -22,6 +25,10 @@ jQuery.noConflict();
        status.hide().html(dados).fadeIn();
     }
     
+    /**
+     * Valida os campos do formulario
+     * @returns {Boolean}
+     */
     function valida_campos(){
         if(!nome_aluno.val()){
             $(nome_aluno).css('border', '1px solid red');
@@ -52,6 +59,7 @@ jQuery.noConflict();
         complete:   function(){form_inserir.get(0).reset();}
     });
     
+    //Inserir registro
     form_inserir.submit(function(event){
         event.preventDefault();
         
@@ -62,7 +70,7 @@ jQuery.noConflict();
             });
         }
     });
-    
+    //Alterar registro
     form_editar.submit(function(event){
         event.preventDefault();
         
@@ -74,6 +82,9 @@ jQuery.noConflict();
         }
     });
     
+    btn_excluir.click(function(){
+        $('#modal-excluir').modal('show');
+    });
     
 })(jQuery);
 

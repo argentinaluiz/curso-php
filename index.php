@@ -30,6 +30,31 @@ $alunos = new Database($conexao);
     <![endif]-->
     </head>
     <body>
+        
+        <!-- Confirmacao ao deletar registro -->
+        <div class="modal fade" tabindex="-1" role="dialog" id="modal-excluir">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Confirmação de exclusão</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Tem certeza que deseja deletar o registro desse aluno?</p>
+                        <p>
+                            <b>Nome:</b> Fulano<br>                            
+                            <b>ID:</b> 2<br>                            
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger">Deletar</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <!-- /Confirmacao ao deletar registro -->
+        
         <div class="container">
             <h1 class="text-center"><span class="glyphicon glyphicon-user"></span> Todos os alunos</h1>
             <p class="text-center">
@@ -63,7 +88,7 @@ $alunos = new Database($conexao);
                                         <a href="editar_registro.php?id=<?php echo $todos['aluno_id'] ?>" class="label label-primary"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
                                     </td>
                                     <td>
-                                        <a href="#" class="label label-danger"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
+                                        <a href="#" class="label label-danger" id="excluir_registro"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
                                     </td>
                                 </tr>
                                 <?php }
