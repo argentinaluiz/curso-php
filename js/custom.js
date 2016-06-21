@@ -14,6 +14,7 @@ jQuery.noConflict();
     var script_editar = 'src/editar.php';
     //Exclusão
     var link_exclusao = $('#link-excluir');
+    var form_excluir = $('#exclui_registro');
     
           
     /**

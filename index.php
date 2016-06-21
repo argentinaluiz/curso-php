@@ -41,13 +41,16 @@ $alunos = new Database($conexao);
                         <h4 class="modal-title" id="myModalLabel">Confirmação</h4>
                     </div>
                     
-                    <div class="modal-body">
-                       <p>Tem certeza que deseja excluir esse registro?</p> 
-                       <p id="registro-para-excluir"></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>                               <a href="#" class="btn btn-danger" id="id-aluno">Deletar</a>
-                    </div>
+                    <form method="post" id="exclui_registro">
+                        <div class="modal-body">
+                           <p>Tem certeza que deseja excluir esse registro?</p> 
+                           <p id="registro-para-excluir"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>                               <a href="#" class="btn btn-danger" id="id-aluno">Deletar</a>
+                        </div>
+                    </form>
+                    
                 </div>
             </div>
         </div><!-- /Confirmacao -->
@@ -85,10 +88,9 @@ $alunos = new Database($conexao);
                                         <a href="editar_registro.php?id=<?php echo $todos['aluno_id'] ?>" class="label label-primary"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
                                     </td>
                                     <td>
-                                        <a href="#" class="label label-danger" style="border: none">
+                                        <a href="#" id="link_id" data-id="<?php echo $todos['aluno_id'] ?>" class="label label-danger" style="border: none">
                                             <span class="glyphicon glyphicon-remove"></span> Excluir
-                                        </a>
-                                        <input type="hidden" name="id" value="<?php echo $todos['aluno_id'] ?>">
+                                        </a>                                        
                                     </td>
                                 </tr>
                                 <?php }
