@@ -30,6 +30,32 @@ $alunos = new Database($conexao);
     <![endif]-->
     </head>
     <body>
+        
+        <!-- Confirmacao -->
+        <div class="modal fade" id="modal-confirmacao" tabindex="-1" role="dialog" aria-labelledby="confirmacao">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Confirmação</h4>
+                    </div>
+                    
+                    <div class="modal-body">
+                       <p>Tem certeza que deseja excluir esse registro?</p> 
+                       <p>
+                           <b>ID:</b> 2 <br>
+                           <b>Nome:</b> Aluno
+                       </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-danger">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /Confirmacao -->
+        
         <div class="container">
             <h1 class="text-center"><span class="glyphicon glyphicon-user"></span> Todos os alunos</h1>
             <p class="text-center">
@@ -63,7 +89,8 @@ $alunos = new Database($conexao);
                                         <a href="editar_registro.php?id=<?php echo $todos['aluno_id'] ?>" class="label label-primary"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
                                     </td>
                                     <td>
-                                        <a href="#" class="label label-danger"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
+                                        <a type="button" class="label label-danger" data-toggle="modal" data-target="#modal-confirmacao"><span class="glyphicon glyphicon-remove"></span> Excluir
+                                        </a>
                                     </td>
                                 </tr>
                                 <?php }
