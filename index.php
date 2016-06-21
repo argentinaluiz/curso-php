@@ -43,14 +43,14 @@ $alunos = new Database($conexao);
                     
                     <div class="modal-body">
                        <p>Tem certeza que deseja excluir esse registro?</p> 
-                       <p>
+                       <p id="registro-para-excluir">
                            <b>ID:</b> 2 <br>
                            <b>Nome:</b> Aluno
                        </p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-danger">Cancelar</button>
+                        <a type="button" class="btn btn-danger" id="id-aluno">Cancelar</a>
                     </div>
                 </div>
             </div>
@@ -89,8 +89,12 @@ $alunos = new Database($conexao);
                                         <a href="editar_registro.php?id=<?php echo $todos['aluno_id'] ?>" class="label label-primary"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
                                     </td>
                                     <td>
-                                        <a type="button" class="label label-danger" data-toggle="modal" data-target="#modal-confirmacao"><span class="glyphicon glyphicon-remove"></span> Excluir
-                                        </a>
+                                        <form id="link-excluir" method="post">
+                                            <button type="submit" class="label label-danger" style="border: none">
+                                                <span class="glyphicon glyphicon-remove"></span> Excluir
+                                            </button>
+                                            <input type="hidden" name="id" value="<?php echo $todos['aluno_id'] ?>">
+                                        </form>
                                     </td>
                                 </tr>
                                 <?php }

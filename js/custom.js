@@ -12,6 +12,9 @@ jQuery.noConflict();
     //Edicao de dados
     var form_editar = $('#editar_aluno');
     var script_editar = 'src/editar.php';
+    //Exclusão
+    var link_exclusao = $('#link-excluir');
+    
           
     /**
      * Retorno de dados do Script PHP
@@ -72,6 +75,15 @@ jQuery.noConflict();
                 data: $(this).serialize()                                
             });
         }
+    });
+    
+    link_exclusao.submit(function(event){
+        event.preventDefault();
+        
+        $.ajax({
+            url: script_editar,  
+            data: $(this).serialize()                                
+        });
     });
     
     
