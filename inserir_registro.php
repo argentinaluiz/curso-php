@@ -41,7 +41,7 @@
                             <a href="index.php" class="btn btn-danger" style="margin: 10px 0 0 10px">Cancelar</a>
                         </div>                        
                     </form>
-                    <div class="col-sm-12" id="status_inserir" style="margin-top: 20px"></div>
+                    <div class="col-sm-12" id="status" style="margin-top: 20px"></div>
                 </div>
             </div>         
             
