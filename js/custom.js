@@ -12,9 +12,16 @@ jQuery.noConflict();
     //Editar
     var form_editar = $('#editar_aluno');
     var script_editar = 'src/editar.php';
+
     //Excluir
     var btn_excluir = $('#excluir_registro');
     var script_editar = 'src/excluir.php';
+
+    //Exclusão
+    var link_exclusao = $('#link-excluir');
+    var form_excluir = $('#exclui_registro');
+    
+
           
     /**
      * Retorno de dados do Script PHP
@@ -82,9 +89,20 @@ jQuery.noConflict();
         }
     });
     
+
     btn_excluir.click(function(){
         $('#modal-excluir').modal('show');
     });
+
+    link_exclusao.submit(function(event){
+        event.preventDefault();
+        
+        $.ajax({
+            url: script_editar,  
+            data: $(this).serialize()                                
+        });
+    });
+    
     
 })(jQuery);
 

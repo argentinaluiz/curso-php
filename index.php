@@ -31,6 +31,7 @@ $alunos = new Database($conexao);
     </head>
     <body>
         
+<<<<<<< HEAD
         <!-- Confirmacao ao deletar registro -->
         <div class="modal fade" tabindex="-1" role="dialog" id="modal-excluir">
             <div class="modal-dialog">
@@ -54,6 +55,31 @@ $alunos = new Database($conexao);
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
         <!-- /Confirmacao ao deletar registro -->
+=======
+        <!-- Confirmacao -->
+        <div class="modal fade" id="modal-confirmacao" tabindex="-1" role="dialog" aria-labelledby="confirmacao">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Confirmação</h4>
+                    </div>
+                    
+                    <form method="post" id="exclui_registro">
+                        <div class="modal-body">
+                           <p>Tem certeza que deseja excluir esse registro?</p> 
+                           <p id="registro-para-excluir"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>                               <a href="#" class="btn btn-danger" id="id-aluno">Deletar</a>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div><!-- /Confirmacao -->
+>>>>>>> 8809864f211459434738aeedba2562ae23ff2ed3
         
         <div class="container">
             <h1 class="text-center"><span class="glyphicon glyphicon-user"></span> Todos os alunos</h1>
@@ -88,7 +114,13 @@ $alunos = new Database($conexao);
                                         <a href="editar_registro.php?id=<?php echo $todos['aluno_id'] ?>" class="label label-primary"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
                                     </td>
                                     <td>
+<<<<<<< HEAD
                                         <a href="#" class="label label-danger" id="excluir_registro"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
+=======
+                                        <a href="#" id="link_id" data-id="<?php echo $todos['aluno_id'] ?>" class="label label-danger" style="border: none">
+                                            <span class="glyphicon glyphicon-remove"></span> Excluir
+                                        </a>                                        
+>>>>>>> 8809864f211459434738aeedba2562ae23ff2ed3
                                     </td>
                                 </tr>
                                 <?php }
