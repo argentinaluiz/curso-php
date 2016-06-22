@@ -15,11 +15,10 @@ jQuery.noConflict();
 
     //Excluir
     var btn_excluir = $('#excluir_registro');
-    var script_editar = 'src/excluir.php';
-
-    //Exclusão
-    var link_exclusao = $('#link-excluir');
-    var form_excluir = $('#exclui_registro');
+    var script_excluir = 'src/excluir.php';
+    var link_excluir = $('.link-excluir');
+    var form_excluir = $('#form_excluir');
+    var status_exclusao = $('#status-exclusao');
     
 
           
@@ -62,8 +61,7 @@ jQuery.noConflict();
         beforeSend:  function(){
                     status.hide().html('<div class="well well-sm"><img src="images/ring-alt.svg" width="40" height="40" alt="Enviando"> Aguarde ...</div>').fadeIn();},                
         error:      retorno,            
-        success:    retorno,
-        complete:   function(){form_inserir.get(0).reset();}
+        success:    retorno
     });
     
     //Inserir registro
@@ -88,18 +86,43 @@ jQuery.noConflict();
             });
         }
     });
-    
 
-    btn_excluir.click(function(){
-        $('#modal-excluir').modal('show');
+    link_excluir.click(function(){
+        var valor_id = $(this).attr('data-id');
+        $.ajax({
+            dataType: "json",
+            url: 'src/consulta_registro.php',  
+            data: {id: valor_id},
+            success: function (dados){
+                $('#registro-para-excluir').html('<br><b>Nome: </b>' + dados.aluno_nome + '<br> <b>ID: </b>' + dados.aluno_id);
+                $('#modal-confirmacao').modal('show');
+                $('<input type="hidden" name="id" value="'+ dados.aluno_id +'">').insertAfter('#btn_excluir');
+            }
+        });
     });
-
-    link_exclusao.submit(function(event){
+    
+    //excluir registro
+    form_excluir.submit(function(event){
         event.preventDefault();
         
         $.ajax({
-            url: script_editar,  
-            data: $(this).serialize()                                
+            url: script_excluir,  
+            data: $(this).serialize(),
+            beforeSend:  function(){
+                status_exclusao.hide().html('<div class="well well-sm"><img src="images/ring-alt.svg" width="40" height="40" alt="Enviando"> Aguarde ...</div>').fadeIn();},
+            success: function(dados){                
+                $('.modal-footer').fadeOut('slow');
+                status_exclusao.hide().html(dados).fadeIn();
+                
+                setTimeout(function(){
+                    $('#modal-confirmacao').modal('hide');
+                }, 1500);                
+            },
+            complete: function(){
+                setTimeout(function(){
+                    window.location="index.php";
+                }, 2000);               
+            }
         });
     });
     

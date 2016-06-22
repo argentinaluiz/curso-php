@@ -31,24 +31,27 @@ $alunos = new Database($conexao);
     </head>
     <body>
         <!-- Confirmacao -->
-        <div class="modal fade" id="modal-confirmacao" tabindex="-1" role="dialog" aria-labelledby="confirmacao">
+        <div class="modal fade" tabindex="-1" role="dialog" id="modal-confirmacao">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                         </button>
                         <h4 class="modal-title" id="myModalLabel">Confirmação</h4>
-                    </div>
+                    </div>                 
                     
-                    <form method="post" id="exclui_registro">
                         <div class="modal-body">
                            <p>Tem certeza que deseja excluir esse registro?</p> 
                            <p id="registro-para-excluir"></p>
+                           <div id="status-exclusao"></div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>                               <a href="#" class="btn btn-danger" id="id-aluno">Deletar</a>
-                        </div>
-                    </form>
+                        
+                        <form method="post" id="form_excluir">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-danger" id="btn_excluir">Deletar</button>                                
+                            </div>
+                        </form>
                     
                 </div>
             </div>
@@ -80,20 +83,16 @@ $alunos = new Database($conexao);
                                 foreach($alunos->listar() as $todos){?>
                                 <tr>
                                     <td><?php echo $todos['aluno_id'] ?></td>
-                                    <td><a href="editar_registro.php?id=<?php echo $todos['aluno_id'] ?>"><?php echo $todos['aluno_nome'] ?></a></td>
+                                    <td><a href="mostrar_registro.php?id=<?php echo $todos['aluno_id'] ?>"><?php echo $todos['aluno_nome'] ?></a></td>
                                     <td><?php echo $todos['aluno_nota'] ?></td>
                                     
                                     <td>
                                         <a href="editar_registro.php?id=<?php echo $todos['aluno_id'] ?>" class="label label-primary"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
                                     </td>
                                     <td>
-<<<<<<< HEAD
-                                        <a href="#" class="label label-danger" id="excluir_registro"><span class="glyphicon glyphicon-remove"></span> Excluir</a>
-=======
-                                        <a href="#" id="link_id" data-id="<?php echo $todos['aluno_id'] ?>" class="label label-danger" style="border: none">
+                                        <a href="#" data-id="<?php echo $todos['aluno_id'] ?>" class="label label-danger link-excluir" style="border: none">
                                             <span class="glyphicon glyphicon-remove"></span> Excluir
-                                        </a>                                        
->>>>>>> 8809864f211459434738aeedba2562ae23ff2ed3
+                                        </a>
                                     </td>
                                 </tr>
                                 <?php }
@@ -109,5 +108,7 @@ $alunos = new Database($conexao);
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    
   </body>
 </html>

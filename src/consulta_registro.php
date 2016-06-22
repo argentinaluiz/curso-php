@@ -1,11 +1,12 @@
-<?php
+<?php 
 
 $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
 
 if(empty($id) || !isset($id)){
-    echo '<p class="alert alert-success"><span class="glyphicon glyphicon-remove"></span> Erro: ID inexistente!</p>';
+    header('location: index.php');
 } else {
     include_once 'Database.php';
+
     $bd_host = 'localhost';
     $bd_nome = 'notas';
     $bd_login = 'root';
@@ -16,14 +17,6 @@ if(empty($id) || !isset($id)){
     } catch(PDOException $e) {
         die('Erro: ' . $e->getCode() . ' - ' . $e->getMessage());
     }
-    $excluir = new Database($conexao);;
-    
-    if($excluir->deletar($id)){
-        echo '<p class="alert alert-success"><span class="glyphicon glyphicon-ok"></span> Registro deletado com sucesso!</p>';
-    } else {
-        echo '<p class="alert alert-success"><span class="glyphicon glyphicon-remove"></span> Erro ao excluir registro</p>';
-    }
-    
+    $listar = new Database($conexao);
+    echo json_encode($listar->listar_pelo_id($id));
 }
-
-
