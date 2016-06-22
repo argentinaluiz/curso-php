@@ -28,7 +28,7 @@ class Database
         if($stmt->execute()){
             return $stmt->fetch(\PDO::FETCH_ASSOC);
         } else {
-            die('<br>' . print_r($statement->errorInfo(), true) . '<br>');
+            die('<br>' . print_r($stmt->errorInfo(), true) . '<br>');
         }
     }
 
@@ -43,7 +43,7 @@ class Database
         if($stmt->execute()){
             return true;
         } else {
-            die('<br>' . print_r($statement->errorInfo(), true) . '<br>');
+            die('<br>' . print_r($stmt->errorInfo(), true) . '<br>');
         }
     }
     
@@ -58,7 +58,7 @@ class Database
         if($stmt->execute()){
             return true;
         } else {
-            die('<br>' . print_r($statement->errorInfo(), true) . '<br>');
+            die('<br>' . print_r($stmt->errorInfo(), true) . '<br>');
         }
     }
     
@@ -71,7 +71,7 @@ class Database
         if($stmt->execute()){
             return true;
         } else {
-            die('<br>' . print_r($statement->errorInfo(), true) . '<br>');
+            die('<br>' . print_r($stmt->errorInfo(), true) . '<br>');
         }
     } 
     
