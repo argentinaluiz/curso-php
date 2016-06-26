@@ -29,3 +29,18 @@ INSERT INTO alunos(aluno_nome, aluno_nota) VALUES ('Lúcia Vasconcelos', 3);
 INSERT INTO alunos(aluno_nome, aluno_nota) VALUES ('João da Silva', 5);
 INSERT INTO alunos(aluno_nome, aluno_nota) VALUES ('Clarice Schmidt', 6);
 INSERT INTO alunos(aluno_nome, aluno_nota) VALUES ('Pedro Taub', 7);
+
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE IF NOT EXISTS `usuarios` (
+    `usuario_id` int(11) NOT NULL AUTO_INCREMENT,    
+    `usuario_nome` varchar(255) NOT NULL,
+    `usuario_email` varchar(255) NOT NULL,
+    `usuario_login` varchar(100) NOT NULL,
+    `usuario_senha` varchar(45) NOT NULL,
+    `usuario_nivel` ENUM('Admin', 'Prof', 'Aluno' ) NOT NULL,
+  PRIMARY KEY (`usuario_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+INSERT INTO usuarios(usuario_nome, usuario_email, usuario_login, usuario_senha, usuario_nivel) 
+            VALUES ('Fulano de Tal', 'meu@email.com.br', 'fulano', 'f1c47f4e9eee40b575e33c7f3471ad35', 'Admin'); /*Senha: FulanoDeTal*/
+
