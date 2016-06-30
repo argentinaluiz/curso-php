@@ -8,5 +8,6 @@ $bd_senha = '';
 
 //PASTAS DE SISTEMA =========================
 define('ROOT', '/');
-define('LAYOUT', '/blocks/');
-define('JS', '/js/');
+define('LAYOUT', ROOT . 'blocks/');
+define('SRC', ROOT . 'src/');
+define('JS', ROOT . 'js/');
