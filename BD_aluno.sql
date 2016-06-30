@@ -42,5 +42,5 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 INSERT INTO usuarios(usuario_nome, usuario_email, usuario_login, usuario_senha, usuario_nivel) 
-            VALUES ('Fulano de Tal', 'meu@email.com.br', 'fulano', 'f1c47f4e9eee40b575e33c7f3471ad35', 'Admin'); /*Senha: FulanoDeTal*/
+            VALUES ('Fulano de Tal', 'meu@email.com.br', 'fulano', '21232f297a57a5a743894a0e4a801fc3', 'Admin'); /*Senha: FulanoDeTal*/
 
