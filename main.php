@@ -1,7 +1,7 @@
 <?php 
+include_once '/src/config.php';
+include_once SRC . 'Database.php';
 
-include_once 'src/Database.php';
-include_once 'src/config.php';
 
 try {
     $conexao = new PDO("mysql:host=$bd_host;dbname=$bd_nome; charset=utf8", $bd_login, $bd_senha, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8'));
