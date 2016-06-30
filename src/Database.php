@@ -6,6 +6,7 @@ class Database
     private $id;
     private $nome;
     private $nota;
+    private $table = 'alunos';
     
     public function __construct(\PDO $obj_db)
     {
@@ -21,7 +22,19 @@ class Database
     }
     
     public function listar_pelo_id($id){
-        $sql = 'SELECT * FROM alunos WHERE aluno_id = :id';
+        $sql = 'SELECT * FROM ' . $this->getTable() . ' WHERE aluno_id = :aluno_id';
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':aluno_id', $id);
+        
+        if($stmt->execute()){
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
+        } else {
+            die('<br>' . print_r($stmt->errorInfo(), true) . '<br>');
+        }
+    }
+    
+    public function listar_user($user, $pass){
+        $sql = 'SELECT * FROM ' . $this->getTable() . ' WHERE aluno_id = :id';
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':id', $id);
         
@@ -32,13 +45,12 @@ class Database
         }
     }
 
-
     public function inserir()
     { 
-        $sql = 'INSERT INTO alunos (aluno_nome, aluno_nota) VALUES (:nome, :nota)';
+        $sql = 'INSERT INTO alunos (aluno_nome, aluno_nota) VALUES (:aluno_nome, :aluno_nota)';
         $stmt = $this->db->prepare($sql);
-        $stmt->bindValue(':nome', $this->getNome(), PDO::PARAM_STR);
-        $stmt->bindValue(':nota', $this->getNota(), PDO::PARAM_INT);
+        $stmt->bindValue(':aluno_nome', $this->getNome(), PDO::PARAM_STR);
+        $stmt->bindValue(':aluno_nota', $this->getNota(), PDO::PARAM_INT);
         
         if($stmt->execute()){
             return true;
@@ -49,11 +61,11 @@ class Database
     
     public function alterar($id)
     {  
-        $sql = 'UPDATE alunos SET aluno_nome = :nome, aluno_nota = :nota WHERE aluno_id = :id';
+        $sql = 'UPDATE ' . $this->getTable() . ' SET aluno_nome = :aluno_nome, aluno_nota = :aluno_nota WHERE aluno_id = :aluno_id';
         $stmt = $this->db->prepare($sql);
-        $stmt->bindValue(':id', $id);
-        $stmt->bindValue(':nome', $this->getNome());
-        $stmt->bindValue(':nota', $this->getNota());
+        $stmt->bindValue(':aluno_id', $id);
+        $stmt->bindValue(':aluno_nome', $this->getNome());
+        $stmt->bindValue(':aluno_nota', $this->getNota());
         
         if($stmt->execute()){
             return true;
@@ -64,7 +76,7 @@ class Database
     
     public function deletar($id)
     {  
-        $sql = 'DELETE FROM alunos WHERE aluno_id = :id';
+        $sql = 'DELETE FROM ' . $this->getTable() . ' WHERE aluno_id = :id';
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':id', $id);
         
@@ -118,6 +130,15 @@ class Database
         $this->nota = $nota;
         return $this;
     }
-            
-}
+    
+    function getTable()
+    {
+        return $this->table;
+    }
 
+    function setTable($table)
+    {
+        $this->table = $table;
+        return $this;
+    }
+}
