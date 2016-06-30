@@ -33,15 +33,16 @@ class Database
         }
     }
     
-    public function listar_user($user, $pass){
-        $sql = 'SELECT * FROM ' . $this->getTable() . ' WHERE aluno_id = :id';
+    public function listar_usuario($user, $pass){        
+        $sql = 'SELECT * FROM usuarios WHERE usuario_login = :usuario_login and usuario_senha = :usuario_login';
         $stmt = $this->db->prepare($sql);
-        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':usuario_login', $user);
+        $stmt->bindValue(':usuario_senha', $pass);
         
         if($stmt->execute()){
             return $stmt->fetch(\PDO::FETCH_ASSOC);
         } else {
-            die('<br>' . print_r($stmt->errorInfo(), true) . '<br>');
+            return false;
         }
     }
 
