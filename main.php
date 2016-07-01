@@ -32,18 +32,18 @@ if($aut->session_check()){
                             <h4 class="modal-title" id="myModalLabel">Confirmação</h4>
                         </div>                 
 
-                            <div class="modal-body">
-                               <p>Tem certeza que deseja excluir esse registro?</p> 
-                               <p id="registro-para-excluir"></p>
-                               <div id="status-exclusao"></div>
-                            </div>
+                        <div class="modal-body">
+                           <p>Tem certeza que deseja excluir esse registro?</p> 
+                           <p id="registro-para-excluir"></p>
+                           <div id="status-exclusao"></div>
+                        </div>
 
-                            <form method="post" id="form_excluir">
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                    <button type="submit" class="btn btn-danger" id="btn_excluir">Deletar</button>                                
-                                </div>
-                            </form>
+                        <form method="post" id="form_excluir">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-danger" id="btn_excluir">Deletar</button>                                
+                            </div>
+                        </form>
 
                     </div>
                 </div>
@@ -63,12 +63,23 @@ if($aut->session_check()){
                 </p>
                 
                 <hr>
+                <div class="row">
+                    <form method="get" action="busca.php">
+                        <div class="form-group">
+                            <div class="col-sm-2 text-right"><label for="busca-aluno">Buscar aluno: </label></div>
+                            <div class="col-sm-8"><input type="text" class="form-control" name="busca-aluno" id="busca-aluno"></div>
+                            <div class="col-sm-2"><button type="submit" class="btn btn-default">Enviar</button></div>
+                        </div>
+                    </form>
+                </div>
+                <hr>
+                
                 <p class="text-center"><span class="glyphicon glyphicon-info-sign"></span> Para ver os dados de um aluno, clique no nome dele.</p>      
 
                 <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">                    
+                    <div class="col-sm-6 col-sm-offset-3">                        
 
-                        <table class="table table-striped">
+                        <table class="table table-striped">                            
                             <tr>
                                 <th class="col-sm-1">ID</th>
                                 <th class="col-sm-4">Nome</th>
