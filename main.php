@@ -111,4 +111,3 @@ if($aut->session_check()){
 <?php } else {
     header('location: ' . ROOT);    
 }
-?>

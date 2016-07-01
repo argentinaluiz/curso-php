@@ -1,23 +1,33 @@
 <?php 
+session_start();
 
-$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+include_once '/src/config.php';
+include_once SRC . 'Database.php';
+include_once SRC . 'Login.php';
 
-if(empty($id) || !isset($id)){
-    header('location: index.php');
-} else {
-    include_once 'src/Database.php';
-    include_once 'src/config.php';
+//Tenta conectar
+try {
+    $conexao = new PDO("mysql:host=$bd_host;dbname=$bd_nome; charset=utf8", $bd_login, $bd_senha, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8'));
+} catch(PDOException $e) {
+    die('Erro: ' . $e->getCode() . ' - ' . $e->getMessage());
+}
 
-    try {
-        $conexao = new PDO("mysql:host=$bd_host;dbname=$bd_nome; charset=utf8", $bd_login, $bd_senha, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8'));
-    } catch(PDOException $e) {
-        die('Erro: ' . $e->getCode() . ' - ' . $e->getMessage());
-    }
-    $listar = new Database($conexao);
-    $aluno = $listar->listar_pelo_id($id);
-    
-    include_once LAYOUT . 'code_head.php';
-?>
+$aut = new Login($conexao);
+
+//Se o usuario esta logado
+if($aut->session_check()){
+
+    $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+    if(empty($id) || !isset($id)){
+        header('location: index.php');
+    } else {
+        
+        $listar = new Database($conexao);
+        $aluno = $listar->listar_pelo_id($id);
+
+        include_once LAYOUT . 'code_head.php';
+    ?>
     <style>
         input{margin-bottom: 10px;}
     </style>
@@ -27,6 +37,9 @@ if(empty($id) || !isset($id)){
             <p class="text-center">
                 <a href="index.php" class="btn btn-primary" style="display: inline-block; margin-bottom: 20px">
                     <span class="glyphicon glyphicon-home"></span> Página inicial
+                </a>
+                <a href="<?php echo SRC ?>logout.php" class="btn btn-danger" style="display: inline-block; margin-bottom: 20px">
+                    <span class="glyphicon glyphicon-off"></span> Logout
                 </a>
             </p>
             <hr>
@@ -47,7 +60,7 @@ if(empty($id) || !isset($id)){
                         </div>                        
                         <div class="col-sm-12">
                             <input type="submit" value="Alterar" class="btn btn-success" style="margin-top: 10px">
-                            <a href="index.php" class="btn btn-danger" style="margin: 10px 0 0 10px">Cancelar</a>
+                            <a href="<?php echo ROOT ?>" class="btn btn-danger" style="margin: 10px 0 0 10px">Cancelar</a>
                             <input type="hidden" name="id" value="<?php echo $aluno['aluno_id'] ?>">
                         </div>                        
                     </form>
@@ -61,4 +74,8 @@ if(empty($id) || !isset($id)){
   </body>
 </html>
 
-<?php } ?>
+<?php 
+    }
+} else {
+    header('location: ' . ROOT);    
+}

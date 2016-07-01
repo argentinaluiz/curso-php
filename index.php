@@ -1,5 +1,21 @@
 <?php
-    require 'src/config.php';
+session_start();
+
+include_once '/src/config.php';
+include_once SRC . 'Database.php';
+include_once SRC . 'Login.php';
+
+//Tenta conectar
+try {
+    $conexao = new PDO("mysql:host=$bd_host;dbname=$bd_nome; charset=utf8", $bd_login, $bd_senha, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8'));
+} catch(PDOException $e) {
+    die('Erro: ' . $e->getCode() . ' - ' . $e->getMessage());
+}
+
+$aut = new Login($conexao);
+
+//Se o usuario esta logado
+if(!$aut->session_check()){
     include_once LAYOUT . 'code_head.php'; 
 ?>
     <body>
@@ -43,3 +59,6 @@
     <?php include_once LAYOUT . 'code_footer.php'; ?>    
   </body>
 </html>
+<?php } else {
+    header('location: /main.php');    
+}
