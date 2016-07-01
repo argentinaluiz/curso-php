@@ -34,7 +34,7 @@ class Database
     }
     
     public function listar_usuario($user, $pass){        
-        $sql = 'SELECT * FROM usuarios WHERE usuario_login = :usuario_login and usuario_senha = :usuario_login';
+        $sql = 'SELECT * FROM usuarios WHERE usuario_login = :usuario_login and usuario_senha = :usuario_senha';
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':usuario_login', $user);
         $stmt->bindValue(':usuario_senha', $pass);
