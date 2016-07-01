@@ -16,7 +16,7 @@
                     </div>
 
                     <div id="login-form" class="panel-body" >
-                        <form id="login-admin" method="post" action="../src/login_script.php">
+                        <form id="login-admin" method="post" action="<?php echo SRC ?>autentica_usuario.php">
                             <div class="input-group" style="margin-bottom: 8px">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-user"></span>
