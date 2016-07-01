@@ -1,40 +1,65 @@
 <?php
 include_once 'Database.php';
 
-class Login extends Database{    
+class Login extends Database{ 
+    private $login;
+    private $senha;
     
-    public function login_user($username, $password){        
-        $user = trim($username);
-        $pass = trim(md5($password));
-               
+    public function __construct(\PDO $obj_db)
+    {
+        parent::__construct($obj_db);
+    }
+
+
+    public function getLogin()
+    {
+        return $this->login;
+    }
+
+    public function getSenha()
+    {
+        return $this->senha;
+    }
+
+    public function setLogin($login)
+    {
+        $this->login = $login;
+        return $this;
+    }
+
+    public function setSenha($senha)
+    {
+        $this->senha = $senha;
+        return $this;
+    }
+
+        
+    public function autentica(){        
+        $user = trim($this->getLogin());
+        $pass = trim(md5($this->getSenha()));
+        
         $resultado = $this->listar_usuario($user, $pass);
         
         if(empty($resultado)){
             return false;
         } else {
             session_start();
-            $_SESSION['permissao'] = true;
-            $_SESSION['token'] = md5(date('Y-m-d'));
-            $_SESSION['id_user'] = $resultado['user_id'];
-            $_SESSION['login'] = $resultado['user_login'];
-            $_SESSION['nome_user'] = $resultado['user_nome'];            
+            $_SESSION['permissao'] = true;           
+            $_SESSION['nivel'] = $resultado['usuario_nivel'];           
             $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
-            $_SESSION['navegador'] = $_SERVER['HTTP_USER_AGENT'];          
-           
-        }
-        
+            $_SESSION['navegador'] = $_SERVER['HTTP_USER_AGENT'];
+            return true;
+        }        
     }
     
     public function logout(){
         if(isset($_SESSION)){
-            unset($_SESSION['permission']);
-            unset($_SESSION['token']);
-            unset($_SESSION['id_user']);
-            unset($_SESSION['login']);
-            unset($_SESSION['nome_user']);
+            unset($_SESSION['permissao']);
+            unset($_SESSION['nivel']);
             unset($_SESSION['ip']);
             unset($_SESSION['navegador']);
             session_destroy();
+            return true;
         } else {
             return false;
         }
