@@ -120,7 +120,7 @@ jQuery.noConflict();
             },
             complete: function(){
                 setTimeout(function(){
-                    window.location="index.php";
+                    window.location="/index.php";
                 }, 2000);               
             }
         });

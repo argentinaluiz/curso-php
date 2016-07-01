@@ -13,7 +13,7 @@ if(empty($id) || !isset($id)){
     } catch(PDOException $e) {
         die('Erro: ' . $e->getCode() . ' - ' . $e->getMessage());
     }
-    $excluir = new Database($conexao);;
+    $excluir = new Database($conexao);
     
     if($excluir->deletar($id)){
         echo '<p class="alert alert-success"><span class="glyphicon glyphicon-ok"></span> Registro deletado com sucesso!</p>';
