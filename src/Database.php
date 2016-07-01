@@ -45,6 +45,18 @@ class Database
             return false;
         }
     }
+    
+    public function listar_busca($termo){
+        $sql = 'SELECT * FROM ' . $this->getTable() . ' WHERE  (aluno_nome LIKE :termo OR aluno_nota LIKE :termo)';
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':termo', '%' . $termo . '%');
+        
+        if($stmt->execute()){
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        } else {
+            return false;
+        }
+    }
 
     public function inserir()
     { 
