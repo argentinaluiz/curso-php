@@ -1,3 +1,7 @@
 node_modules/
 nbproject/
-codeEdu.rar
+vendor/composer/
+vendor/pimple/
+vendor/psr/
+vendor/silex/
+vendor/symfony/
