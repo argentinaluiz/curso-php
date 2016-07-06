@@ -1,7 +1,3 @@
 node_modules/
 nbproject/
-vendor/composer/
-vendor/pimple/
-vendor/psr/
-vendor/silex/
-vendor/symfony/
+vendor/
