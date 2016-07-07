@@ -1,6 +1,9 @@
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
+
+use Silex\Application as App;
+
 $app = new Silex\Application();
 $app['debug'] = true;
 
@@ -18,7 +21,7 @@ $posts = array(
 );
 
 
-$app->get('/posts/{id}', function(Silex\Application $app, $id) use($posts){
+$app->get('/posts/{id}', function(App $app, $id) use($posts){
    
     foreach ($posts as $post){
         if($post['id'] == $id){
