@@ -1,15 +1,11 @@
 # Curso PHP - Code Education
-## 2ª Fase do Projeto - Silex
+## 3ª Fase do Projeto - Services
 
 Tarefas dessa fase:
  
-1 - Criar um arquivo separado para os posts mover a lógica para lá
+1 - Criar um serviço compartilhado para prover nosso array de posts
 
-2 - Criar uma outra rota (/posts) para listar todos posts e seus conteúdos
-
-3 - Nesse arquivo, criar link para exibição do post
-
-4 - Página para exibir apenas um post
+2 - As rotas criadas usarão este serviço para pegar e mostrar os posts
 
 ------------------------------------------------------------------------------------------
 [Pixwell web design](http://www.pixwell.com.br) - Web design e outras coisas interessantes
