@@ -1,6 +1,6 @@
 <?php
 
-$bd_posts = array(
+$bd_lista = array(
     0 => array('id' => 54, 'conteudo' => 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut volutpat. Nulla pellentesque. In sed neque.'),
     1 => array('id' => 5, 'conteudo' => 'Maecenas quis ante a dolor hendrerit congue. Vestibulum risus enim, mollis ultricies, venenatis non, euismod ac, tellus.'),
     2 => array('id' => 123, 'conteudo' => 'Sed metus elit, blandit nec, ultrices id, scelerisque ultrices, augue. Phasellus accumsan. Cras porta. Sed turpis urna, aliquet in, ornare et, congue bibendum, justo.'),
@@ -13,5 +13,5 @@ $bd_posts = array(
     9 => array('id' => 9542, 'conteudo' => 'Nulla facilisi. Integer lacus. Cras sed arcu at erat condimentum venenatis. Sed lacus tortor, rutrum eu, venenatis ac.')
 );
 
-return $bd_posts;
+
 
