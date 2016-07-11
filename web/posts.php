@@ -6,18 +6,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Silex\Application as App;
 
-//Lista de posts
-include 'bd.php';
+//Servico para obter Lista de posts
+$posts_lista = $app['lista_de_posts'];
 
 //Controller Posts
 $posts = $app['controllers_factory'];
 
 //Lista de posts - URL posts Nivel 1
-$posts->get('/', function(App $app) use ($bd_posts){
-    if(!empty($bd_posts)){
+$posts->get('/', function(App $app) use ($posts_lista){
+    if(!empty($posts_lista)){
         
         $html = '';
-        foreach ($bd_posts as $key => $post){
+        foreach ($posts_lista as $key => $post){
             $html .= '<p><b>ID:</b> <a href="/posts/' . $post['id'] . '">' . $post['id'] . '</a></p>';
             $html .= '<p>' . $post['conteudo'] . '</p>';
             $html .= '<hr>';
@@ -30,9 +30,9 @@ $posts->get('/', function(App $app) use ($bd_posts){
 });
 
 //Posts único - URL posts Nivel 2
-$posts->get('/{id}', function(App $app, $id) use ($bd_posts){
+$posts->get('/{id}', function(App $app, $id) use ($posts_lista){
     
-    foreach ($bd_posts as $post){
+    foreach ($posts_lista as $post){
         if($post['id'] == $id){
             $html = '<h1>ID: ' . $post['id'] . '</h1>';
             $html .= '<p>' . $post['conteudo'] . '</p>';
