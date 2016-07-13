@@ -7,6 +7,9 @@ use Symfony\Component\HttpFoundation\Response;
 $app = new Silex\Application();
 $app['debug'] = true;
 
+//PROVIDERS =================================
+$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
+
 //SERVICOS =================================
 //BD
 $app['lista_de_posts'] = $app->share(function(){
@@ -18,7 +21,7 @@ $app['lista_de_posts'] = $app->share(function(){
 //index
 $index = $app['controllers_factory'];
 $index->get('/', function() use($app){
-    return new Response('<h1>Home</h1><p><a href="/posts">Ir para a lista de posts</a></p>');
+    return new Response('<h1>Home</h1><p><a href="' . $app['url_generator']->generate('lista-posts') . '">Ir para a lista de posts</a></p>');
 });
 
 //ROTAS =====================================

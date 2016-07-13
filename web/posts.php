@@ -18,7 +18,7 @@ $posts->get('/', function(App $app) use ($posts_lista){
         
         $html = '';
         foreach ($posts_lista as $key => $post){
-            $html .= '<p><b>ID:</b> <a href="/posts/' . $post['id'] . '">' . $post['id'] . '</a></p>';
+            $html .= '<p><b>ID:</b> <a href="' . $app['url_generator']->generate('lista-posts') . $post['id'] . '">' . $post['id'] . '</a></p>';
             $html .= '<p>' . $post['conteudo'] . '</p>';
             $html .= '<hr>';
         }
@@ -27,7 +27,7 @@ $posts->get('/', function(App $app) use ($posts_lista){
     } else {
         return new Response('Nenhum registro encontrado');
     }  
-});
+})->bind('lista-posts');
 
 //Posts único - URL posts Nivel 2
 $posts->get('/{id}', function(App $app, $id) use ($posts_lista){
@@ -36,7 +36,7 @@ $posts->get('/{id}', function(App $app, $id) use ($posts_lista){
         if($post['id'] == $id){
             $html = '<h1>ID: ' . $post['id'] . '</h1>';
             $html .= '<p>' . $post['conteudo'] . '</p>';
-            $html .= '<p><a href="/posts">Voltar para a lista</a></p>';
+            $html .= '<p><a href="' . $app['url_generator']->generate('lista-posts') . '">Voltar para a lista</a></p>';
         }
     }
     
