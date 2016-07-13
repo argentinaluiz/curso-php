@@ -17,8 +17,9 @@ $posts->get('/', function(App $app) use ($posts_lista){
     if(!empty($posts_lista)){
         
         $html = '';
-        foreach ($posts_lista as $key => $post){
-            $html .= '<p><b>ID:</b> <a href="' . $app['url_generator']->generate('lista-posts') . $post['id'] . '">' . $post['id'] . '</a></p>';
+        $html .= '<h1>Hello World!</h1>';
+        foreach ($posts_lista as $key => $post){            
+            $html .= '<h2><b>ID:</b> <a href="' . $app['url_generator']->generate('lista-posts') . $post['id'] . '">' . $post['id'] . '</a></h2>';
             $html .= '<p>' . $post['conteudo'] . '</p>';
             $html .= '<hr>';
         }
@@ -34,9 +35,9 @@ $posts->get('/{id}', function(App $app, $id) use ($posts_lista){
     
     foreach ($posts_lista as $post){
         if($post['id'] == $id){
-            $html = '<h1>ID: ' . $post['id'] . '</h1>';
+            $html = '<h2>ID: ' . $post['id'] . '</h2>';
             $html .= '<p>' . $post['conteudo'] . '</p>';
-            $html .= '<p><a href="' . $app['url_generator']->generate('lista-posts') . '">Voltar para a lista</a></p>';
+            $html .= '<p><a href="' . $app['url_generator']->generate('lista-posts') . '" class="btn btn-default">Voltar para a lista</a></p>';
         }
     }
     
