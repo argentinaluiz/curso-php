@@ -2,28 +2,17 @@
 {% extends "layout.twig" %}
 
 {# Titulo da pagina #}
-{% block title %}Lista de Posts{% endblock %}
+{% block title %}Post único{% endblock %}
 
 {# Conteudo #}
 {% block lista_de_posts %}
     <div class="container">
-        <h1>Lista de posts</h1>
+        <h1>Post único</h1>
+        <hr>
         
-        {# Posts #}
-        
-        {% if posts %}
-            
-            {# se o array posts nao estiver vazio #}
-            {% for item in posts %}
-                {# path() acessa a rota nomeada e concatena com o ID #}
-                <h2><a href="{{path('lista-posts') ~ item.id}}">{{item.id}}</a></h2>
-                <p>{{item.conteudo}}</p>
-                <hr>
-            {% endfor %}
-            
-        {% else %}
-            <p>Nenhum registro encontrado</p>
-        {% endif %}        
+        <h2>{{titulo}}</h2>
+        <p style="margin-bottom: 30px;">{{conteudo}}</p> 
+        <p><a href="{{path('lista-posts')}}">Voltar para a lista</a></p>        
         
     </div>
 {% endblock %}
