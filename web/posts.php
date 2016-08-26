@@ -19,7 +19,23 @@ $posts->get('/', function(App $app) use ($posts_lista){
 })->bind('lista-posts');
 
 //Posts único - URL posts Nivel 2
-$posts->get('/{id}', function(App $app, $id) use ($posts_lista){    
+$posts->get('/{id}', function(App $app, $id) use ($posts_lista){ 
+    $retorno = false;
+    
+    foreach ($posts_lista as $post){
+        if($post['id'] == $id){
+            $titulo = $post['id'];
+            $conteudo = $post['conteudo'];
+            $retorno = true;
+        } 
+    }
+    
+    if($retorno){
+        return $app['twig']->render('single.twig', array('titulo' => $titulo, 'conteudo' => $conteudo));
+    } else {        
+        return new Response($app['twig']->render('error.twig', array('id' => $id)), 404);      
+    }
+    
 });
 
 //IMPORTANTE! Retornar controller
