@@ -14,7 +14,14 @@ $posts = $app['controllers_factory'];
 
 //Lista de posts - URL posts Nivel 1
 
-$posts->get('/', function(App $app) use ($posts_lista){
+$posts->get('/', function(App $app) use ($posts_lista, $em){
+    /*$grava = new \SON\Entity\Post;
+    $grava->setTitulo('Lorem ipsum dolor sit amet, consectetur adipisicing elit. ');
+    $grava->setconteudo('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, officiis ea quod blanditiis laudantium vitae debitis accusamus voluptate assumenda cum! Praesentium, qui, blanditiis voluptatem odio necessitatibus quae vitae numquam aliquid. ');
+    
+    $em->persist($grava);
+    $em->flush();*/
+    
     return $app['twig']->render('posts.twig', array('posts' => $posts_lista));
 })->bind('lista-posts');
 
