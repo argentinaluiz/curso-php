@@ -17,7 +17,7 @@ class Post
     private $id;
     
     /**
-     * @ORM\Column(type="string", lenght=300)
+     * @ORM\Column(type="string", length=300)
      */
     private $titulo;
     
