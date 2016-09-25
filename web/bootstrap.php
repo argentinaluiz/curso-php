@@ -11,9 +11,8 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 
 //SERVICOS =================================
 //BD
-$app['lista_de_posts'] = $app->share(function(){
-    include 'bd.php';
-    return $bd_lista;
+$app['BD'] = $app->share(function(){
+    return new SON\Database($em);
 });
 
 //DOCTRINE =================================

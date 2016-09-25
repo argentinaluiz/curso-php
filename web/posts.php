@@ -6,8 +6,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Silex\Application as App;
 
-//Servico para obter Lista de posts
-$posts_lista = $app['lista_de_posts'];
+//BD
+$bd = $app['BD'];
 
 //Controller Posts
 $posts = $app['controllers_factory'];
@@ -23,7 +23,8 @@ $posts->get('/novo', function(App $app){
 })->bind('form-criar-post');
 
 //Cadastrar post
-$posts->post('/new',function(App $app){   
+$posts->post('/new',function(App $app){
+    $bd->insert($_POST);
 })->bind('grava-post');
 
 //Formulario para editar post
@@ -53,7 +54,7 @@ $posts->get('/{id}', function(App $app, $id) use ($posts_lista){
     }
     
     if($retorno){
-        return $app['twig']->render('single.twig', array('titulo' => $titulo, 'conteudo' => $conteudo));
+        return new Response($app['twig']->render('single.twig', array('titulo' => $titulo, 'conteudo' => $conteudo)), 200);
     } else {        
         return new Response($app['twig']->render('error.twig', array('id' => $id)), 404);      
     }
