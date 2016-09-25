@@ -1,5 +1,21 @@
 <?php
 
+$app = new Silex\Application();
+$app['debug'] = true;
+
+//PROVIDERS =================================
+$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
+$app->register(new Silex\Provider\TwigServiceProvider(), array(
+    'twig.path' => __DIR__ . '/../views',
+));
+
+//SERVICOS =================================
+//BD
+$app['lista_de_posts'] = $app->share(function(){
+    include 'bd.php';
+    return $bd_lista;
+});
+
 //DOCTRINE =================================
 use Doctrine\ORM\Tools\Setup,
     Doctrine\ORM\EntityManager,
@@ -78,20 +94,3 @@ $em = EntityManager::create(
 );
 
 //FIM DOCTRINE =================================
-
-
-$app = new Silex\Application();
-$app['debug'] = true;
-
-//PROVIDERS =================================
-$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
-$app->register(new Silex\Provider\TwigServiceProvider(), array(
-    'twig.path' => __DIR__ . '/../views',
-));
-
-//SERVICOS =================================
-//BD
-$app['lista_de_posts'] = $app->share(function(){
-    include 'bd.php';
-    return $bd_lista;
-});

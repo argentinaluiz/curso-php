@@ -12,20 +12,35 @@ $posts_lista = $app['lista_de_posts'];
 //Controller Posts
 $posts = $app['controllers_factory'];
 
-//Lista de posts - URL posts Nivel 1
-
+//Lista de posts
 $posts->get('/', function(App $app) use ($posts_lista, $em){
-    /*$grava = new \SON\Entity\Post;
-    $grava->setTitulo('Lorem ipsum dolor sit amet, consectetur adipisicing elit. ');
-    $grava->setconteudo('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, officiis ea quod blanditiis laudantium vitae debitis accusamus voluptate assumenda cum! Praesentium, qui, blanditiis voluptatem odio necessitatibus quae vitae numquam aliquid. ');
-    
-    $em->persist($grava);
-    $em->flush();*/
-    
     return $app['twig']->render('posts.twig', array('posts' => $posts_lista));
 })->bind('lista-posts');
 
-//Posts único - URL posts Nivel 2
+//Formulario para criar novo post
+$posts->get('/novo', function(App $app){
+    return $app['twig']->render('criar_post.twig');
+})->bind('form-criar-post');
+
+//Cadastrar post
+$posts->post('/new',function(App $app){   
+})->bind('grava-post');
+
+//Formulario para editar post
+$posts->get('/editar/{id}',function(App $app, $id){
+    return $app['twig']->render('editar_post.twig');
+})->bind('form-editar-post');
+
+//Editar post
+$posts->post('/update/{id}',function(App $app, $id){
+})->bind('edita-post');
+
+//Deletar post
+$posts->post('/update/{id}',function(App $app, $id){
+})->bind('deleta-post');
+
+
+//Posts único
 $posts->get('/{id}', function(App $app, $id) use ($posts_lista){ 
     $retorno = false;
     
