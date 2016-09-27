@@ -11,7 +11,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 
 //SERVICOS =================================
 //BD
-$app['BD'] = $app->share(function(){
+$app['BD'] = $app->share(function($em){
     return new SON\Database($em);
 });
 

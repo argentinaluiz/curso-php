@@ -13,8 +13,8 @@ $bd = $app['BD'];
 $posts = $app['controllers_factory'];
 
 //Lista de posts
-$posts->get('/', function(App $app) use ($posts_lista, $em){
-    return $app['twig']->render('posts.twig', array('posts' => $posts_lista));
+$posts->get('/', function(App $app){
+    return $app['twig']->render('posts.twig');
 })->bind('lista-posts');
 
 //Formulario para criar novo post
@@ -24,7 +24,6 @@ $posts->get('/novo', function(App $app){
 
 //Cadastrar post
 $posts->post('/new',function(App $app){
-    $bd->insert($_POST);
 })->bind('grava-post');
 
 //Formulario para editar post
@@ -42,23 +41,8 @@ $posts->post('/update/{id}',function(App $app, $id){
 
 
 //Posts único
-$posts->get('/{id}', function(App $app, $id) use ($posts_lista){ 
-    $retorno = false;
-    
-    foreach ($posts_lista as $post){
-        if($post['id'] == $id){
-            $titulo = $post['id'];
-            $conteudo = $post['conteudo'];
-            $retorno = true;
-        } 
-    }
-    
-    if($retorno){
-        return new Response($app['twig']->render('single.twig', array('titulo' => $titulo, 'conteudo' => $conteudo)), 200);
-    } else {        
-        return new Response($app['twig']->render('error.twig', array('id' => $id)), 404);      
-    }
-    
+$posts->get('/{id}', function(App $app, $id){ 
+       
 });
 
 //IMPORTANTE! Retornar controller
