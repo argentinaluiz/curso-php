@@ -9,11 +9,6 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__ . '/../views',
 ));
 
-//SERVICOS =================================
-//BD
-$app['BD'] = $app->share(function($em){
-    return new SON\Database($em);
-});
 
 //DOCTRINE =================================
 use Doctrine\ORM\Tools\Setup,
