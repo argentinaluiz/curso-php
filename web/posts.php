@@ -2,12 +2,9 @@
 
 include 'bd.php';
 
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Request as Request;
 use Symfony\Component\HttpFoundation\Response;
 use Silex\Application as App;
-
-//BD
-$bd = $app['BD'];
 
 //Controller Posts
 $posts = $app['controllers_factory'];
@@ -23,7 +20,29 @@ $posts->get('/novo', function(App $app){
 })->bind('form-criar-post');
 
 //Cadastrar post
-$posts->post('/new',function(App $app){
+$posts->post('/new',function(App $app, Request $request) use($em){
+    $titulo = $request->get('titulo');
+    $conteudo = $request->get('conteudo');
+    
+    if(empty($titulo) || empty($conteudo)){
+        return new Response('Preencha corretamente o formulário', 404);
+    } else {
+        $post = new \SON\Entity\Post;
+        $post->setTitulo($titulo);
+        $post->setConteudo($conteudo);
+        
+        // $em instanceof EntityManager
+        $em->getConnection()->beginTransaction(); // suspend auto-commit
+        try {
+            $em->persist($post);
+            $em->flush($post);
+            $em->getConnection()->commit();
+            return new Response(json_encode(['retorno' => true, 'mensagem' => 'Post salvo com sucesso']));
+        } catch (Exception $e) {
+            $em->getConnection()->rollBack();
+            throw $e;
+        }
+    }
 })->bind('grava-post');
 
 //Formulario para editar post
