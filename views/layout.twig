@@ -6,8 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Projeto Silex{% endblock %}</title>
         
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-        <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+        {# ==== Endereco base para os assets ==== #}
+        {% set asset_base = '/assets' %}
+        
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">        
   
     </head>
     <body>
@@ -16,8 +18,11 @@
         {% endblock %}
       
     <!-- ################# JS ################# -->
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script src="{{ asset_base }}/js/custom.js"></script>
     <script>
         tinymce.init({ 
         selector:'.editorHTML',
