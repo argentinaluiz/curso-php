@@ -10,8 +10,9 @@ use Silex\Application as App;
 $posts = $app['controllers_factory'];
 
 //Lista de posts
-$posts->get('/', function(App $app){
-    return $app['twig']->render('posts.twig');
+$posts->get('/', function(App $app) use($em){
+    $lista_posts = $em->getRepository("\SON\Entity\Post")->findAll();
+    return $app['twig']->render('posts.twig', array('lista_posts' => $lista_posts));
 })->bind('lista-posts');
 
 //Formulario para criar novo post
@@ -40,6 +41,7 @@ $posts->post('/new',function(App $app, Request $request) use($em){
             return new Response(json_encode(['retorno' => true, 'mensagem' => 'Post salvo com sucesso']));
         } catch (Exception $e) {
             $em->getConnection()->rollBack();
+            return new Response(json_encode(['retorno' => false, 'mensagem' => 'Erro ao gravar Post']));
             throw $e;
         }
     }
