@@ -13,12 +13,14 @@
         </p>
         <hr>
         <div class="row">
-            <form action="{{path('grava-post')}}" method="post" class="form-group col-sm-8 col-sm-offset-2">
+            <form id="cria-post" action="{{path('grava-post')}}" method="post" class="form-group col-sm-8 col-sm-offset-2">
                 <input type="text" name="titulo" id="titulo" class="form-control" style="margin-bottom: 30px;" placeholder="Título">
                 
                 <div style="margin-bottom: 30px;">
                     <textarea name="conteudo" rows="20" class="editorHTML"></textarea>
                 </div>
+                
+                <div id="status"></div>
                 
                 <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Salvar</button>
                 <a href="{{path('lista-posts')}}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Cancelar</a>
