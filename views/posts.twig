@@ -26,7 +26,7 @@
                             <p>{{item.conteudo|raw[:100]|striptags}} {# Filtro "raw" nao escapa o HTML, e usado quando o HTML deve ser interpretado#}</p>
                         </td>
                         <td class="col-sm-2" style="vertical-align: middle">
-                            <a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+                            <a href="{{path('edita-post') ~ item.id}}" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Editar</a>
                         </td>
                         <td class="col-sm-2" style="vertical-align: middle">
                             <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Deletar</a>

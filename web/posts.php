@@ -51,11 +51,12 @@ $posts->get('/editar/{id}',function(App $app, $id){
 })->bind('form-editar-post');
 
 //Editar post
-$posts->post('/update/{id}',function(App $app, $id){
+$posts->post('/update/{id}',function($id){
+    return new Response('ID: ' . $id);
 })->bind('edita-post');
 
 //Deletar post
-$posts->post('/update/{id}',function(App $app, $id){
+$posts->post('/delete/{id}',function(App $app, $id){
 })->bind('deleta-post');
 
 
