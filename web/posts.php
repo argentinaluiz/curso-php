@@ -1,7 +1,5 @@
 <?php
 
-include 'bd.php';
-
 use Symfony\Component\HttpFoundation\Request as Request;
 use Symfony\Component\HttpFoundation\Response;
 use Silex\Application as App;
@@ -62,9 +60,19 @@ $posts->post('/update/{id}',function(App $app, $id){
 
 
 //Posts único
-$posts->get('/{id}', function(App $app, $id){ 
-       
-});
+$posts->get('/{id}', function(App $app, $id) use($em){
+    // $em instanceof EntityManager
+    $em->getConnection()->beginTransaction(); // suspend auto-commit
+    try {
+        $post = $em->getRepository('\SON\Entity\Post')->find($id);        
+        $em->getConnection()->commit();
+        return $app['twig']->render('single.twig', array('single' => $post));
+        //return new Response(var_dump($post));
+    } catch (Exception $e) {
+        $em->getConnection()->rollBack();
+        throw $e;
+    }
+})->bind('post-unico');
 
 //IMPORTANTE! Retornar controller
 return $posts;
