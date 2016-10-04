@@ -52,7 +52,7 @@ $posts->get('/editar/{id}',function(App $app, $id){
 
 //Editar post
 $posts->post('/update/{id}',function($id){
-    return new Response('ID: ' . $id);
+    return new Response('Teste ID: ' . $id);
 })->bind('edita-post');
 
 //Deletar post
