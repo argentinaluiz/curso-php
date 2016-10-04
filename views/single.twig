@@ -2,17 +2,18 @@
 {% extends "layout.twig" %}
 
 {# Titulo da pagina #}
-{% block title %}Post único{% endblock %}
+{% block title %}{{single.titulo}} | Post único{% endblock %}
 
 {# Conteudo #}
 {% block lista_de_posts %}
     <div class="container">
-        <h1>Post único</h1>
+        <h2 class="text-center" style="margin-bottom: 30px">{{single.titulo}}</h2>
+        <p class="text-center">
+            <a href="{{path('lista-posts')}}" class="label label-danger"><span class="glyphicon glyphicon-home"></span> Página principal</a>
+            <a href="#" class="label label-primary"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+            <a href="#" class="label label-danger"><span class="glyphicon glyphicon-remove"></span> Deletar</a> 
+        </p>
         <hr>
-        
-        <h2>{{titulo}}</h2>
-        <p style="margin-bottom: 30px;">{{conteudo}}</p> 
-        <p><a href="{{path('lista-posts')}}">Voltar para a lista</a></p>        
-        
+        {{single.conteudo|raw}}        
     </div>
 {% endblock %}
