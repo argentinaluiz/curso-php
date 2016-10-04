@@ -1,11 +1,11 @@
 # Curso PHP - Code Education
 ## 5ª Fase do Projeto - Doctrine
 
-- Tarefas dessa fase:
+###Tarefas dessa fase:
  
 Criar um CRUD completo para os posts 
 
-- Assim serão as rotas:
+###Assim serão as rotas:
 
 GET /posts - para listar todos os posts
 
