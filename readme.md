@@ -1,15 +1,25 @@
 # Curso PHP - Code Education
-## 4ª Fase do Projeto - Providers
+## 5ª Fase do Projeto - Doctrine
 
-Tarefas dessa fase:
+- Tarefas dessa fase:
  
-1 - Criar um layout para a aplicação, usando o estilo do Bootstrap 3
+Criar um CRUD completo para os posts 
 
-2 - Adicione o css via online (CDN)
+- Assim serão as rotas:
 
-3 - Criar a página para listar os posts, use o URLGeneratorProvider
+GET /posts - para listar todos os posts
 
-4 - Criar a página para o post
+GET /post/novo - para abrir o formulário de cadastro de post
+
+POST /post/new - para cadastrar o post
+
+GET /post/editar/{id} - para abrir o formulário de edição de post
+
+POST /post/update/{id} - para atualizar o post
+
+GET /post/excluir/{id} - para excluir o post
+
+O post terá os seguintes campos: id (int e chave primária), titulo (string) e conteudo (string).
 
 ------------------------------------------------------------------------------------------
 [Pixwell web design](http://www.pixwell.com.br) - Web design e outras coisas interessantes
