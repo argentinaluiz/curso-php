@@ -46,9 +46,19 @@ $posts->post('/new',function(App $app, Request $request) use($em){
 })->bind('grava-post');
 
 //Formulario para editar post
-$posts->get('/editar/{id}',function(App $app, $id){
-    return $app['twig']->render('editar_post.twig');
+$posts->get('/editar/{id}', function(App $app, $id) use($em){    
+    $post = $em->getRepository('\SON\Entity\Post')->find($id);
+    if($post){
+       return $app['twig']->render('editar_post.twig', array('post_edit' => $post)); 
+    }else{
+       return $app['twig']->render('error.twig', array('id' => $id)); 
+    }
 })->bind('form-editar-post');
+
+//Redireciona se acessar sem ID
+$posts->get('/editar/', function(App $app){    
+    return $app->redirect($app['url_generator']->generate('lista-posts'));
+});
 
 //Editar post
 $posts->post('/update/{id}',function($id){
