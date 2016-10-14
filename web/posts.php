@@ -24,7 +24,7 @@ $posts->post('/new',function(App $app, Request $request) use($em){
     $conteudo = $request->get('conteudo');
     
     if(empty($titulo) || empty($conteudo)){
-        return new Response('Preencha corretamente o formulário', 404);
+        return new Response('Preencha corretamente o formulário');
     } else {
         $post = new \SON\Entity\Post;
         $post->setTitulo($titulo);
@@ -61,8 +61,22 @@ $posts->get('/editar/', function(App $app){
 });
 
 //Editar post
-$posts->post('/update/{id}',function($id){
-    return new Response('Teste ID: ' . $id);
+$posts->post('/update/{id}',function(App $app, $id, Request $request) use($em){ 
+    $titulo = $request->get('titulo');
+    $conteudo = $request->get('editorHTML');
+    
+    if(empty($titulo) || empty($conteudo)){
+        return new Response('Preencha os campos corretamente');
+    } else {
+        $edit = $em->getReference('\SON\Entity\Post', $id);
+        $edit->setTitulo($titulo);
+        $edit->setConteudo($conteudo);
+        $em->flush($edit);
+        
+       return new Response('Post atualizado com sucesso!');
+       //return new Response(json_encode(['retorno' => true, 'mensagem' => 'Post atualizado com sucesso!']));
+    }
+    
 })->bind('edita-post');
 
 //Deletar post
