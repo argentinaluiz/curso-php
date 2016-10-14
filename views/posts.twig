@@ -29,7 +29,9 @@
                             <a href="{{path('form-editar-post', {id: item.id})}}" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Editar</a>
                         </td>
                         <td class="col-sm-2" style="vertical-align: middle">
-                            <a href="{{path('deleta-post', {id: item.id})}}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Deletar</a>
+                            <form action="{{path('deleta-post', {id: item.id})}}" method="post">
+                                <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Deletar</button>
+                            </form>
                         </td>
                     </tr>
                 {% endfor %}
