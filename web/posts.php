@@ -7,18 +7,18 @@ use Silex\Application as App;
 //Controller Posts
 $posts = $app['controllers_factory'];
 
-//Lista de posts
+//GET /posts - para listar todos os posts
 $posts->get('/', function(App $app) use($em){
     $lista_posts = $em->getRepository("\SON\Entity\Post")->findAll();
     return $app['twig']->render('posts.twig', array('lista_posts' => $lista_posts));
 })->bind('lista-posts');
 
-//Formulario para criar novo post
+//GET /post/novo - para abrir o formulário de cadastro de post
 $posts->get('/novo', function(App $app){
     return $app['twig']->render('criar_post.twig');
 })->bind('form-criar-post');
 
-//Cadastrar post
+//POST /post/new - para cadastrar o post
 $posts->post('/new',function(App $app, Request $request) use($em){
     $titulo = $request->get('titulo');
     $conteudo = $request->get('conteudo');
@@ -45,7 +45,7 @@ $posts->post('/new',function(App $app, Request $request) use($em){
     }
 })->bind('grava-post');
 
-//Formulario para editar post
+//GET /post/editar/{id} - para abrir o formulário de edição de post
 $posts->get('/editar/{id}', function(App $app, $id) use($em){    
     $post = $em->getRepository('\SON\Entity\Post')->find($id);
     if($post){
@@ -60,7 +60,7 @@ $posts->get('/editar/', function(App $app){
     return $app->redirect($app['url_generator']->generate('lista-posts'));
 });
 
-//Editar post
+//POST /post/update/{id} - para atualizar o post
 $posts->post('/update/{id}',function(App $app, $id, Request $request) use($em){ 
     $titulo = $request->get('titulo');
     $conteudo = $request->get('editorHTML');
@@ -78,7 +78,7 @@ $posts->post('/update/{id}',function(App $app, $id, Request $request) use($em){
     
 })->bind('edita-post');
 
-//Deletar post
+//GET /post/excluir/{id} - para excluir o post
 $posts->post('/delete/{id}',function(App $app, $id) use($em){
     $delete = $em->getReference('\SON\Entity\Post', $id);
     $em->remove($delete);
