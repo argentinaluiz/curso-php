@@ -74,13 +74,16 @@ $posts->post('/update/{id}',function(App $app, $id, Request $request) use($em){
         $em->flush($edit);
         
        return new Response('Post atualizado com sucesso!');
-       //return new Response(json_encode(['retorno' => true, 'mensagem' => 'Post atualizado com sucesso!']));
     }
     
 })->bind('edita-post');
 
 //Deletar post
-$posts->post('/delete/{id}',function(App $app, $id){
+$posts->post('/delete/{id}',function(App $app, $id) use($em){
+    $delete = $em->getReference('\SON\Entity\Post', $id);
+    $em->remove($delete);
+    $em->flush($delete);
+    return new Response('Post excluído com sucesso!');
 })->bind('deleta-post');
 
 
