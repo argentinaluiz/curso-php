@@ -7,7 +7,10 @@
 {# Conteudo #}
 {% block lista_de_posts %}
     <div class="container">
-        <h1 style="margin-bottom: 30px">Lista de posts</h1>
+        <h1 style="margin-bottom: 30px" class="text-center">Lista de posts</h1>
+        <p class="text-center">            
+            <a href="{{path('form-criar-post')}}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Novo post</a> 
+        </p>
         
         {# Posts #} 
         <div class="table-responsive">
