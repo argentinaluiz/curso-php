@@ -30,7 +30,7 @@ jQuery.noConflict();
             success: function(data){                
                 if(data.retorno){
                     status.hide().html('<p class="alert alert-success">'+ icon_sucesso + data.mensagem +'</p>').fadeIn();
-                    $(this).get(0).reset();
+                    $('form#cria-post').get(0).reset();
                 } else {
                     status.hide().html('<p class="alert alert-danger">' + icon_erro + data.mensagem +'</p>').fadeIn();
                 }               
