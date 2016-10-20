@@ -9,11 +9,14 @@
     <div class="container">
         <h2 class="text-center" style="margin-bottom: 30px">{{single.titulo}}</h2>
         <p class="text-center">
-            <a href="{{path('lista-posts')}}" class="label label-danger"><span class="glyphicon glyphicon-home"></span> Página principal</a>
-            <a href="#" class="label label-primary"><span class="glyphicon glyphicon-edit"></span> Editar</a>
-            <a href="#" class="label label-danger"><span class="glyphicon glyphicon-remove"></span> Deletar</a> 
+            <a href="{{path('lista-posts')}}" class="label label-danger"><span class="glyphicon glyphicon-home"></span> Página principal</a>            
         </p>
         <hr>
-        {{single.conteudo|raw}}        
+        {{single.conteudo|raw}}
+        <hr>
+        <a href="{{path('form-editar-post', {id: single.id})}}" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+        <form action="{{path('deleta-post', {id: single.id})}}" method="post" style="display: inline-block">
+            <a type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Deletar</a>
+        </form>
     </div>
 {% endblock %}
