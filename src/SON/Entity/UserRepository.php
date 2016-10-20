@@ -30,7 +30,14 @@ class UserRepository extends EntityRepository implements UserProviderInterface
 
     public function supportsClass($class)
     {
-        
+        return $class === 'SON\Entity\User';        
+    }
+    
+    public function encodePassword(User $user)
+    {
+        if($user->plainPassword){
+            $user->password = $this->passwordEncoder->encodePassword($user->plainPassword, $this->getSalt());
+        }
     }
 
 }
