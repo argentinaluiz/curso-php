@@ -29,19 +29,9 @@ $posts->post('/new',function(App $app, Request $request) use($em){
         $post = new \SON\Entity\Post;
         $post->setTitulo($titulo);
         $post->setConteudo($conteudo);
-        
-        // $em instanceof EntityManager
-        $em->getConnection()->beginTransaction(); // suspend auto-commit
-        try {
-            $em->persist($post);
-            $em->flush($post);
-            $em->getConnection()->commit();
-            return new Response(json_encode(['retorno' => true, 'mensagem' => 'Post salvo com sucesso']));
-        } catch (Exception $e) {
-            $em->getConnection()->rollBack();
-            return new Response(json_encode(['retorno' => false, 'mensagem' => 'Erro ao gravar Post']));
-            throw $e;
-        }
+        $em->persist($post);
+        $em->flush();
+        return new Response(json_encode(['retorno' => true, 'mensagem' => 'Post salvo com sucesso']));
     }
 })->bind('grava-post');
 
@@ -68,11 +58,10 @@ $posts->post('/update/{id}',function(App $app, $id, Request $request) use($em){
     if(empty($titulo) || empty($conteudo)){
         return new Response('Preencha os campos corretamente');
     } else {
-        $edit = $em->getReference('\SON\Entity\Post', $id);
+        $edit = $em->getRepository('\SON\Entity\Post')->find($id);
         $edit->setTitulo($titulo);
         $edit->setConteudo($conteudo);
-        $em->flush($edit);
-        
+        $em->flush();        
        return new Response('Post atualizado com sucesso!');
     }
     
@@ -80,26 +69,17 @@ $posts->post('/update/{id}',function(App $app, $id, Request $request) use($em){
 
 //GET /post/excluir/{id} - para excluir o post
 $posts->post('/delete/{id}',function(App $app, $id) use($em){
-    $delete = $em->getReference('\SON\Entity\Post', $id);
+    $delete = $em->getRepository('\SON\Entity\Post')->find($id);
     $em->remove($delete);
-    $em->flush($delete);
+    $em->flush();
     return new Response('Post excluído com sucesso!');
 })->bind('deleta-post');
 
 
 //Posts único
 $posts->get('/{id}', function(App $app, $id) use($em){
-    // $em instanceof EntityManager
-    $em->getConnection()->beginTransaction(); // suspend auto-commit
-    try {
-        $post = $em->getRepository('\SON\Entity\Post')->find($id);        
-        $em->getConnection()->commit();
-        return $app['twig']->render('single.twig', array('single' => $post));
-        //return new Response(var_dump($post));
-    } catch (Exception $e) {
-        $em->getConnection()->rollBack();
-        throw $e;
-    }
+    $post = $em->getRepository('\SON\Entity\Post')->find($id);
+    return $app['twig']->render('single.twig', array('single' => $post));
 })->bind('post-unico');
 
 //IMPORTANTE! Retornar controller
