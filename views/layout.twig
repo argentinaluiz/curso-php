@@ -25,6 +25,11 @@
     <script>
         tinymce.init({ 
         selector:'.editorHTML',
+        setup: function (editor) {
+            editor.on('change', function () {
+                editor.save();
+            });
+        }
         //toolbar: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect"
         });
     </script>
